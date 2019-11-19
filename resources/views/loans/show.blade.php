@@ -1,0 +1,172 @@
+@extends('layouts.app')
+@section('content')
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 class="page-title">Loan Details <a href="{{route('loans')}}" class="btn btn-success btn-rounded pull-right"><i class="fa fa-backward"></i> Back</a></h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row custom-invoice">
+                            <div class="col-6 col-sm-6 m-b-20">
+                                <img src="{{asset('frontend/assets/img/farm.png')}}" class="inv-logo" alt="">
+                            </div>
+                            <div class="col-6 col-sm-6 m-b-20">
+                                <div class="invoice-details">
+                                    <h3 class="text-lowercasecase">Loan #{{$loan->loan_id}}</h3>
+                                    <ul class="list-unstyled">
+                                        <li>Start Date: <span>{{$loan->establishment_date}}</span></li>
+                                        <li>End date: <span>{{$loan->end_date}}</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 col-lg-6 m-b-20">
+                                <h6><strong>Client Details</strong></h6>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <td><h6>Name:</h6></td>
+                                    <td>{{$client->full_name}}</td>
+                                    <td><h6>National Id:</h6></td>
+                                    <td>{{$client->national_id}}</td>
+                                    <td><h6>Account Number:</h6></td>
+                                    <td>{{$client->account}}</td>
+                                </tr>
+                                <tr>
+                                    <td><h6>Email:</h6></td>
+                                    <td>{{$client->email}}</td>
+                                    <td><h6>Phone Number:</h6></td>
+                                    <td>{{$client->phone}}</td>
+                                    <td><h6>Address:</h6></td>
+                                    <td>{{$client->address}}</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6 col-lg-6 m-b-20">
+                                <h6><strong>Loan Details</strong></h6>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <td><h6>Principal Amount:</h6></td>
+                                    <td>{{$loan->loan_amount}}</td>
+                                    <td><h6>Repayment Frequency:</h6></td>
+                                    <td>{{$loan->FrequencyName($loan->repayment_frequency)}}</td>
+                                    <td><h6>Installment Amount:</h6></td>
+                                    <td>{{$loan->installment_amount}}</td>
+                                </tr>
+                                <tr>
+                                    <td><h6>Period:</h6></td>
+                                    <td>@if($loan->period=="1"){{$loan->period." year"}}@else {{$loan->period." years"}}@endif</td>
+                                    <td><h6>Total Installments:</h6></td>
+                                    <td>{{$loan->total_installments}}</td>
+                                    <td><h6>Branch:</h6></td>
+                                    <td>{{$loan->branch}}</td>
+                                </tr>
+                                <tr>
+                                    <td><h6>Interest: </h6></td>
+                                    <td>{{$loan->applicable_interest*100 ."%"}}</td>
+                                    <td><h6>Penalty:</h6></td>
+                                    <td>{{$loan->applicable_penalt*100 ."%"}}</td>
+                                    <td><h6>Status:</h6></td>
+                                    <td>@if($loan->status=="103" or $loan->status=="106" or $loan->status=="108")<i class="custom-badge badge-danger-border">{{$loan->StatusName($loan->status)}}</i>@else<i class="custom-badge badge-success-border">{{$loan->StatusName($loan->status)}}</i>@endif</td>
+                                </tr>
+                                <tr>
+                                    <td><h6>Asset Name: </h6></td>
+                                    <td>{{$asset->asset_name}}</td>
+                                    <td><h6>Asset Number:</h6></td>
+                                    <td>{{$asset->asset_number}}</td>
+                                    <td><h6>Description:</h6></td>
+                                    <td>{{$asset->asset_description}}</td>
+                                </tr>
+                                <tr>
+                                    <td><h6>Product Line: </h6></td>
+                                    <td>{{$loan->facility_category}}</td>
+                                    <td><h6>Captured By:</h6></td>
+                                    <td>{{$loan->captured_by}}</td>
+                                    <td><h6>Authorised By:</h6></td>
+                                    <td>{{$loan->authorised_by}}</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6 col-lg-6 m-b-20">
+                                <h6><strong>Installment Details</strong></h6>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>DATE</th>
+                                    <th>CAPTURED BY</th>
+                                    <th>REFERENCE</th>
+                                    <th>CURRENCY</th>
+                                    <th>TOTAL</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($installments as $installment)
+                                <tr>
+                                    <td>{{$installment->id}}</td>
+                                    <td>{{$installment->created_at}}</td>
+                                    <td>{{$installment->captured_by}}</td>
+                                    <td>{{$installment->ft_reference}}</td>
+                                    <td>{{$installment->currency}}</td>
+                                    <td>{{$installment->amount}}</td>
+                                </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                            <div class="row invoice-payment">
+                                <div class="col-sm-7">
+                                </div>
+                                <div class="col-sm-5">
+                                    <div class="m-b-20">
+                                        <h6>Payment Breakdown</h6>
+                                        <div class="table-responsive no-border">
+                                            <table class="table mb-0">
+                                                <tbody>
+                                                <tr>
+                                                    <th>Total Payable:</th>
+                                                    <td class="text-right text-primary">
+                                                        <h5>{{$loan->total_amount_payable}}</h5>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Paid Amount:</th>
+                                                    <td class="text-right">{{$loan->paid_amount}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Outstanding Balance:</th>
+                                                    <td class="text-right">{{$loan->outstanding}}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

@@ -1,0 +1,50 @@
+<?php
+
+namespace App\Console;
+
+use App\Console\Commands\CalculatePenalts;
+use App\Console\Commands\CloseLoans;
+use App\Console\Commands\EmailAdvice;
+use Illuminate\Console\Scheduling\Schedule;
+use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+
+class Kernel extends ConsoleKernel
+{
+    /**
+     * The Artisan commands provided by your application.
+     *
+     * @var array
+     */
+    protected $commands = [
+        CloseLoans::class,
+        EmailAdvice::class,
+        CalculatePenalts::class,
+    ];
+
+    /**
+     * Define the application's command schedule.
+     *
+     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @return void
+     */
+    protected function schedule(Schedule $schedule)
+    {
+        // $schedule->command('inspire')
+        //          ->hourly();
+        $schedule->command('close:loans')->everyMinute();
+        $schedule->command('email:advice')->everyMinute();
+        $schedule->command('calculate:penalts')->everyMinute();
+    }
+
+    /**
+     * Register the commands for the application.
+     *
+     * @return void
+     */
+    protected function commands()
+    {
+        $this->load(__DIR__.'/Commands');
+
+        require base_path('routes/console.php');
+    }
+}
