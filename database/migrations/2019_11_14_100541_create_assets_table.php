@@ -17,6 +17,8 @@ class CreateAssetsTable extends Migration
             $table->bigIncrements('id');
             $table->string('asset_number')->unique();
             $table->string('asset_name');
+            $table->string('serial_number')->nullable();
+            $table->string('asset_value');
             $table->text('asset_description');
             $table->string('status')->nullable()->default('102');
             $table->timestamps();

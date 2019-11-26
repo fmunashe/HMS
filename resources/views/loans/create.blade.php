@@ -36,13 +36,17 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label">Asset Number</label>
+                                <label class="col-md-3 col-form-label">Select Assets</label>
                                 <div class="col-md-9">
-                                        <input id="asset_number" type="text" class="form-control @error('asset_number') is-invalid @enderror" name="asset_number" value="{{ old('asset_number') }}"  autocomplete="asset_number" autofocus>
+                                        <select id="asset_number" multiple size="8" class="form-control @error('asset_number') is-invalid @enderror" name="asset_number[]"  autocomplete="asset_number" autofocus>
+                                         @foreach($assets as $asset)
+                                        <option value="{{$asset->asset_number}}">{{$asset->asset_number."  ".$asset->asset_description }}</option>
+                                        @endforeach
+                                        </select>
                                         @error('asset_number')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
-                                    </span>
+                                        </span>
                                         @enderror
                                 </div>
                             </div>
@@ -209,6 +213,8 @@
         let diffDays;
         let result;
         let cal;
+        let closing,int,capital,i,answer;
+        let compound=0;
         function check1() {
             principal=+(document.getElementById('loan_amount').value);
             startDate=new Date(document.getElementById('establishment_date').value);
@@ -222,11 +228,19 @@
             totalInstallments=frequency*period;
             document.getElementById('total_installments').value=totalInstallments;
             interest=+(document.getElementById('applicable_interest').value);
-            cal=principal*interest;
-            totalPayable=principal+cal;
-            document.getElementById('total_amount_payable').value=totalPayable.toFixed(2);
-            installmentAmount=totalPayable/totalInstallments;
+
+            installmentAmount=(principal*(interest/frequency))/(1-(Math.pow(1+(interest/frequency),-totalInstallments)));
             document.getElementById('installment_amount').value=installmentAmount.toFixed(2);
+
+            // closing=principal;
+            // for(i=0;i<totalInstallments;i++){
+            //     int=closing*interest;
+            //     compound+=int;
+            //     capital=installmentAmount-int;
+            //     closing-=capital;
+            // }
+            // answer=principal+compound;
+            document.getElementById('total_amount_payable').value=(installmentAmount*totalInstallments).toFixed(2);
         }
     </script>
 @endsection

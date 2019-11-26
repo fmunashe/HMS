@@ -120,6 +120,12 @@ class InstallmentController extends Controller
         Alert::info("Info","Nothing to show for client id ".$installment->client_id)->showConfirmButton('Close', '#6dd5ed');
         return back();
     }
+    public function clientId(Loan $loan)
+    {
+        //
+      $loan=Loan::where('loan_id',$loan)->first();
+      return $loan->client_id;
+    }
 
     /**
      * Show the form for editing the specified resource.

@@ -50,7 +50,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users','regex:/(.*)@agribank\.co\.zw/i'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'branch'=>['required'],
         ]);
@@ -69,6 +69,6 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'branch'=>$data['branch'],
-        ]);
+        ])->assignRole('basic_access');
     }
 }

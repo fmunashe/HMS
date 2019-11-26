@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Asset;
 use App\Http\Requests\AssetRequest;
+use App\Imports\AssetImport;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Validators\ValidationException;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AssetController extends Controller
@@ -22,7 +27,8 @@ class AssetController extends Controller
         }
         $assets=Asset::all();
         $allocated=Asset::where('status','100')->count();
-        return view('assets.index',compact('assets','allocated'));
+        $reserved=Asset::where('status','101')->count();
+        return view('assets.index',compact('assets','allocated','reserved'));
     }
 
     /**
@@ -48,6 +54,8 @@ class AssetController extends Controller
         $asset=new Asset();
         $asset->asset_number=$request->input('asset_number');
         $asset->asset_name=$request->input('asset_name');
+        $asset->serial_number=$request->input('serial_number');
+        $asset->asset_value=$request->input('asset_value');
         $asset->asset_description=$request->input('asset_description');
         $asset->save();
         return redirect()->route('assets')->withSuccessMessage("Asset Successfully Recorded");
@@ -59,6 +67,21 @@ class AssetController extends Controller
      * @param  \App\Asset  $asset
      * @return \Illuminate\Http\Response
      */
+    public function importFile(){
+    return view('assets.importFile');
+    }
+    public function import( Request $request){
+        $validator = Validator::make($request->all(), [
+            'assetFile' => 'required|mimes:xls,xlsx,csv,txt'
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        }
+            $upload = $request->file('assetFile');
+            $import = new AssetImport();
+            $import->import($upload);
+            return redirect()->route('assets')->withSuccessMessage('Assets successfully imported');
+    }
     public function show(Asset $asset)
     {
         //
@@ -90,6 +113,8 @@ class AssetController extends Controller
             $asset->update([
                 'asset_number' => $request->input('asset_number'),
                 'asset_name' => $request->input('asset_name'),
+                'serial_number'=>$request->input('serial_number'),
+                'asset_value'=>$request->input('asset_value'),
                 'asset_description' => $request->input('asset_description')
             ]);
             return redirect()->route('assets')->withSuccessMessage("Asset details successfully updated");
@@ -109,6 +134,10 @@ class AssetController extends Controller
     public function destroy(Asset $asset)
     {
         //
+        if($asset->status!='102'){
+            Alert::error("Error","Allocated and Reserved assets cannot be deleted")->showConfirmButton('Close','#b92b27');
+            return back();
+        }
         $asset->delete();
         return redirect()->route('assets')->withSuccessMessage("Asset record removed from system");
     }

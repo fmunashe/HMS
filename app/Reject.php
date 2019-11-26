@@ -10,7 +10,6 @@ class Reject extends Model
         'account_number',
         'loan_id',
         'client_id',
-        'asset_number',
         'loan_amount',
         'establishment_date',
         'end_date',
@@ -30,4 +29,8 @@ class Reject extends Model
         'branch',
         'installment_amount',
     ];
+    public function StatusName($code){
+        $name=Status::where('status_code','=',$code)->first();
+        return $name->status_name;
+    }
 }

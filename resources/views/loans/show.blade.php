@@ -82,14 +82,16 @@
                                     <td><h6>Status:</h6></td>
                                     <td>@if($loan->status=="103" or $loan->status=="106" or $loan->status=="108")<i class="custom-badge badge-danger-border">{{$loan->StatusName($loan->status)}}</i>@else<i class="custom-badge badge-success-border">{{$loan->StatusName($loan->status)}}</i>@endif</td>
                                 </tr>
+                                @foreach($assets as $asset)
                                 <tr>
                                     <td><h6>Asset Name: </h6></td>
-                                    <td>{{$asset->asset_name}}</td>
+                                    <td>{{$asset->AssetName($asset->asset_number)}}</td>
                                     <td><h6>Asset Number:</h6></td>
                                     <td>{{$asset->asset_number}}</td>
                                     <td><h6>Description:</h6></td>
-                                    <td>{{$asset->asset_description}}</td>
+                                    <td>{{$asset->AssetDesc($asset->asset_number)}}</td>
                                 </tr>
+                                @endforeach
                                 <tr>
                                     <td><h6>Product Line: </h6></td>
                                     <td>{{$loan->facility_category}}</td>
@@ -100,10 +102,9 @@
                                 </tr>
                             </table>
                         </div>
-
                         <div class="row">
                             <div class="col-sm-6 col-lg-6 m-b-20">
-                                <h6><strong>Installment Details</strong></h6>
+                                <h6><strong>Loan Schedule</strong></h6>
                             </div>
                         </div>
 
@@ -111,12 +112,47 @@
                             <table class="table table-striped table-hover">
                                 <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>DATE</th>
-                                    <th>CAPTURED BY</th>
-                                    <th>REFERENCE</th>
-                                    <th>CURRENCY</th>
-                                    <th>TOTAL</th>
+                                    <td><h6>#</h6></td>
+                                    <td><h6>Period</h6></td>
+                                    <td><h6>Opening Balance</h6></td>
+                                    <td><h6>Installment</h6></td>
+                                    <td><h6>Interest</h6></td>
+                                    <td><h6>Capital Repayment</h6></td>
+                                    <td><h6>Closing Balance</h6></td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($schedules as $schedule)
+                                    <tr>
+                                        <td>{{$schedule->id}}</td>
+                                        <td>{{$schedule->period}}</td>
+                                        <td>{{$schedule->opening_balance}}</td>
+                                        <td>{{$schedule->installment}}</td>
+                                        <td>{{$schedule->interest}}</td>
+                                        <td>{{$schedule->capital_repayment}}</td>
+                                        <td>{{$schedule->closing_balance}}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-6 col-lg-6 m-b-20">
+                                <h6><strong>Installment Details</strong></h6>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <td><h6>#</h6></td>
+                                    <td><h6>DATE</h6></td>
+                                    <td><h6>CAPTURED BY</h6></td>
+                                    <td><h6>REFERENCE</h6></td>
+                                    <td><h6>CURRENCY</h6></td>
+                                    <td><h6>TOTAL</h6></td>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -158,6 +194,17 @@
                                                     <td class="text-right">{{$loan->outstanding}}</td>
                                                 </tr>
                                                 </tbody>
+                                                <tr>
+                                                    <td></td>
+                                                    <td class="text-right">
+                                                        @hasrole('authorizer')
+                                                        <a class="dropdown-item" href="/authorizeLoan/{{$loan->id}}"><i class="custom-badge status-green fa fa-thumbs-up m-r-5">&nbsp Authorize</i></a>
+                                                       @endhasrole
+                                                        @hasrole('inputter')
+                                                        <a class="dropdown-item" href="/rejectLoan/{{$loan->id}}"><i class="custom-badge status-red fa fa-thumbs-up m-r-5">&nbsp Rollback</i></a>
+                                                        @endhasrole
+                                                    </td>
+                                                </tr>
                                             </table>
                                         </div>
                                     </div>

@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card-box">
-                <h4 class="card-title">Rejected Loans <a href="{{route('home')}}" class="btn btn-success btn-rounded pull-right"><i class="fa fa-backward"></i> Back</a></h4>
+                <h4 class="card-title">My Rolled back Loans <a href="{{route('home')}}" class="btn btn-success btn-rounded pull-right"><i class="fa fa-backward"></i> Back</a></h4>
                 <table class="table table-striped table-hover table-condensed">
                     <thead>
                     <tr>

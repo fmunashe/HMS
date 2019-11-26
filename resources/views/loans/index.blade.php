@@ -38,9 +38,6 @@
                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <a class="dropdown-item" href="/showLoan/{{$loan->id}}"><i class="custom-badge status-blue fa fa-eye m-r-5">&nbsp; Show</i></a>
-                                        <a class="dropdown-item" href="/authorizeLoan/{{$loan->id}}"><i class="custom-badge status-orange fa fa-eye m-r-5">&nbsp; Authorize</i></a>
-                                        <a class="dropdown-item" href="/rejectLoan/{{$loan->id}}"><i class="custom-badge status-pink fa fa-pencil m-r-5">&nbsp; Reject</i></a>
-                                        <a class="dropdown-item" href="/deleteLoan/{{$loan->id}}"><i class="custom-badge status-red fa fa-trash-o m-r-5">&nbsp;Delete</i></a>
                                     </div>
                                 </div>
                             </td>

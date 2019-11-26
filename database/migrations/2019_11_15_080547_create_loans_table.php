@@ -18,7 +18,6 @@ class CreateLoansTable extends Migration
             $table->string('account_number');
             $table->string('loan_id')->unique();
             $table->string('client_id');
-            $table->string('asset_number')->unique();
             $table->string('loan_amount');
             $table->date('establishment_date');
             $table->date('end_date');

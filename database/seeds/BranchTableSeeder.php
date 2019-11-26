@@ -2,6 +2,7 @@
 
 use App\Branch;
 use App\Currency;
+use App\Facility;
 use App\Repayment;
 use App\Status;
 use Illuminate\Database\Seeder;
@@ -16,10 +17,19 @@ class BranchTableSeeder extends Seeder
     public function run()
     {
         //
-        Branch::create([
-            'branch_code' => '040',
-            'branch_name' => 'Nelson Mandela',
-        ]);
+        $branches=[
+            ['branch_code'=>'040','branch_name'=>'Nelson Mandela'],
+            ['branch_code'=>'020','branch_name'=>'Marondera'],
+        ];
+        foreach ($branches as $branch) {
+            Branch::create($branch);
+        }
+        $facilities=[
+            ['facility_name'=>'John Deere','facility_description'=>'New Agricultural loan scheme']
+        ];
+        foreach ($facilities as $facility) {
+            Facility::create($facility);
+        }
         Currency::create([
             'currency_code' => '840',
             'currency_name' => 'USD',
@@ -40,7 +50,7 @@ class BranchTableSeeder extends Seeder
             ['status_code'=>'103','status_name' => 'Awaiting Authorisation'],
             ['status_code'=>'104','status_name' => 'In Funding'],
             ['status_code'=>'105','status_name' => 'Current'],
-            ['status_code'=>'106','status_name' => 'Rejected'],
+            ['status_code'=>'106','status_name' => 'Rolled Back'],
             ['status_code'=>'107','status_name' => 'Fully Paid'],
             ['status_code'=>'108','status_name' => 'Anomalies'],
         ];

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('frontend/assets/img/favi.ico')}}">
-    <title>Agribank Loans Facility</title>
+    <title>Agribank Financial Aid Services</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('frontend/assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('frontend/assets/css/font-awesome.min.css')}}">
@@ -22,7 +22,7 @@
     <div class="header">
         <div class="header-left">
             <a href="{{route('home')}}" class="logo">
-                <img src="{{asset('frontend/assets/img/logo.png')}}" width="35" height="35" alt=""> <span>Loans Facility</span>
+                <img src="{{asset('frontend/assets/img/chikwereti.png')}}" width="50" height="50" alt="">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<span><strong>F A S</strong></span>
             </a>
         </div>
         <a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
@@ -57,7 +57,7 @@
                 <ul>
                     <li class="menu-title">Main</li>
                     <li class="active">
-                        <a href="{{route('branches')}}"><i class="fa fa-dashboard text-success"></i> <span>Dashboard</span></a>
+                        <a href="{{route('home')}}"><i class="fa fa-dashboard text-success"></i> <span>Dashboard</span></a>
                     </li>
                     <li>
                         <a href="{{route('customers')}}"><i class="fa fa-users text-success"></i> <span>Clients</span></a>
@@ -71,6 +71,7 @@
                     <li>
                         <a href="{{route('loans')}}"><i class="fa fa-bitcoin text-success"></i> <span>&nbsp;Loans</span></a>
                     </li>
+                    @hasrole('administrator')
                     <li class="submenu">
                         <a href="#"><i class="fa fa-cogs text-success"></i> <span> Configurables </span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
@@ -81,22 +82,24 @@
                             <li><a href="{{route('frequencies')}}"><i class="fa fa-signal text-success"></i> <span>&nbsp;Repayment Period</span></a></li>
                             <li><a href="{{route('statuses')}}"><i class="fa fa-comments-o text-success"></i> <span> Statuses</span></a></li>
                             <li><a href="{{route('roles')}}"><i class="fa fa-key text-success"></i> <span> Roles & Permissions</span></a></li>
+                            <li><a href="{{route('users')}}"><i class="fa fa-user text-success"></i> <span>System Users</span></a></li>
                         </ul>
                     </li>
+                    @endhasrole
 
                     <li class="submenu">
                         <a href="#"><i class="fa fa-tasks text-success"></i> <span> My Activities </span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
                             <li><a href="{{route('myLoans')}}"><i class="fa fa-suitcase text-success"></i> All my Loans </a></li>
                             <li><a href="{{route('unauthorised')}}"><i class="fa fa-thumbs-o-down text-warning"></i>Unauthorised Loans </a></li>
-                            <li><a href="{{route('rejections')}}"><i class="fa fa-times-circle-o text-danger"></i> Rejected Loans </a></li>
+                            <li><a href="{{route('rejections')}}"><i class="fa fa-refresh text-danger"></i> Rolled back Loans </a></li>
                         </ul>
                     </li>
                     <li class="submenu">
                         <a href="#"><i class="fa fa-flag-o"></i> <span> Reports </span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
-                            <li><a href="expense-reports.html"> My Loans </a></li>
-                            <li><a href="invoice-reports.html"> Invoice Report </a></li>
+                            <li><a href="expense-reports.html"> Loan Maturity </a></li>
+                            <li><a href="invoice-reports.html"> Loan Schedule </a></li>
                         </ul>
                     </li>
                 </ul>

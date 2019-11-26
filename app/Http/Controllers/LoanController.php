@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Asset;
+use App\AssetLoan;
 use App\Customer;
 use App\Facility;
 use App\Installment;
 use App\Interest;
 use App\Loan;
+use App\LoanSchedule;
 use App\Penalty;
 use App\Reject;
 use App\Repayment;
@@ -43,7 +45,8 @@ class LoanController extends Controller
         $rates=Interest::all();
         $facilities=Facility::all();
         $frequencies=Repayment::all();
-        return view('loans.create',compact('rates','facilities','frequencies'));
+        $assets=Asset::where('status','102')->get();
+        return view('loans.create',compact('rates','facilities','frequencies','assets'));
     }
 
     /**
@@ -57,7 +60,6 @@ class LoanController extends Controller
         $loan=new Loan();
         $latestLoan = Loan::orderby('created_at','DESC')->first();
         $checkClient=Customer::where('national_id',$request->input('client_id'))->exists();
-        $asset=Asset::where('asset_number',$request->input('asset_number'))->first();
         if($latestLoan==null){
             $loan->loan_id = 'LD' . str_pad(1, 7, "0", STR_PAD_LEFT);
         }
@@ -66,20 +68,11 @@ class LoanController extends Controller
         }
         if(!$checkClient){
             Alert::error("Error","We have no reference for a client with ID ".$request->input('client_id'))->showConfirmButton('Close', '#b92b27');
-                return back()->withInput();
+                return redirect()->route('myLoans');
         }
         $account=Customer::where('national_id',$request->input('client_id'))->first();
         $loan->account_number=$account->account;
         $loan->client_id=$request->input('client_id');
-        if(!$asset){
-            Alert::error("Error","This asset number (".$request->input('asset_number').") does not exist in our system. Please verify and try again")->showConfirmButton('Close', '#b92b27');
-            return back()->withInput();
-        }
-        if($asset->status=='100' or $asset->status=='101'){
-            Alert::error("Error","You cannot re-allocate this asset (".$request->input('asset_number').") as it was allocated to someone else")->showConfirmButton('Close', '#b92b27');
-            return back()->withInput();
-        }
-        $loan->asset_number=$request->input('asset_number');
         $loan->loan_amount=$request->input('loan_amount');
         $loan->establishment_date=$request->input('establishment_date');
         $loan->end_date=$request->input('end_date');
@@ -96,12 +89,16 @@ class LoanController extends Controller
         $loan->branch=auth()->user()->branch;
         $loan->installment_amount=$request->input('installment_amount');
         $loan->save();
-        $ass = Asset::where('asset_number',$request->input('asset_number'))->first();
-        if($ass)
-        {
-          $ass->status = '101';
-          $ass->save();
-         }
+
+        foreach ($request->asset_number as $nums){
+            $assetLoan=new AssetLoan();
+            $assetLoan->loan_id=$loan->loan_id;
+            $assetLoan->asset_number=$nums;
+            $ass = Asset::where('asset_number',$nums)->first();
+            $ass->status = '101';
+            $ass->save();
+            $assetLoan->save();
+        }
 
         if($loan->repayment_frequency=='12'){
           $due=30;
@@ -124,6 +121,37 @@ class LoanController extends Controller
         $penalt->penalty_fee=0;
         $penalt->due_date=Carbon::createFromDate($loan->establishment_date)->addDays($due);
         $penalt->save();
+        for($i=1;$i<=$loan->total_installments;$i++) {
+            $schedule = new LoanSchedule();
+            $check=LoanSchedule::where('loan_id',$loan->loan_id)->exists();
+            if($check){
+                usleep(250000);
+                $latestId= LoanSchedule::where('loan_id',$loan->loan_id)->orderby('created_at','DESC')->first();
+                $schedule->loan_id = $loan->loan_id;
+                $schedule->period=$i;
+                $schedule->opening_balance=$latestId->closing_balance;
+                $schedule->interest=round(($loan->applicable_interest/$loan->repayment_frequency)*($schedule->opening_balance),2);
+                $schedule->installment=$loan->installment_amount;
+                $schedule->capital_repayment=round($schedule->installment-$schedule->interest,2);
+                $schedule->closing_balance=round($schedule->opening_balance-$schedule->capital_repayment,2);
+                $schedule->start_date=Carbon::now();
+                $schedule->end_date=Carbon::now();
+                $schedule->save();
+            }
+            else {
+                $schedule->loan_id = $loan->loan_id;
+                $schedule->period = $i;
+                $schedule->opening_balance = $loan->loan_amount;
+                $schedule->interest =round( ($loan->applicable_interest/$loan->repayment_frequency) * ($schedule->opening_balance),2);
+                $schedule->installment = $loan->installment_amount;
+                $schedule->capital_repayment = round($schedule->installment - $schedule->interest,2);
+                $schedule->closing_balance = round($schedule->opening_balance - $schedule->capital_repayment,2);
+                $schedule->start_date = Carbon::now();
+                $schedule->end_date = Carbon::now();
+                $schedule->save();
+            }
+        }
+
         return redirect()->route('myLoans')->withSuccessMessage("Loan application sent for Authorisation");
     }
 
@@ -136,13 +164,15 @@ class LoanController extends Controller
     public function show(Loan $loan)
     {
        $client=Customer::where('national_id',$loan->client_id)->first();
-       $asset=Asset::where('asset_number',$loan->asset_number)->first();
+       $assets=AssetLoan::where('loan_id',$loan->loan_id)->get();
        $installments=Installment::where('loan_id',$loan->loan_id)->get();
-       return view('loans.show',compact('loan','client','asset','installments'));
+       $schedules=LoanSchedule::where('loan_id',$loan->loan_id)->get();
+       return view('loans.show',compact('loan','client','assets','installments','schedules'));
     }
+
     public function authorizeLoan(Loan $loan){
         if(auth()->user()->name==$loan->captured_by){
-            Alert::error('Error', "You cannot authorize a loan that you have captured yourself, ask someone else to authorize for you")->showConfirmButton('Close', '#b92b27');
+            Alert::error('Error', "You cannot authorize a loan that you have captured yourself, ask your supervisor to authorize for you")->showConfirmButton('Close', '#b92b27');
             return back();
         }
         if($loan->status!='103'){
@@ -156,24 +186,31 @@ class LoanController extends Controller
         $loan->status="104";
         $loan->authorised_by=auth()->user()->name;
         $loan->save();
-        $ass = Asset::where('asset_number',$loan->asset_number)->first();
-        if($ass)
-        {
-            $ass->status = '100';
-            $ass->save();
+        $assetLoan=AssetLoan::where('loan_id',$loan->loan_id)->get();
+        foreach ($assetLoan as $nums){
+            $ass = Asset::where('asset_number',$nums->asset_number)->first();
+            if($ass) {
+                $ass->status = "100";
+                $ass->save();
+            }
         }
        return redirect()->route('loans')->withSuccessMessage("Loan ".$loan->loan_id." Successfully authorized");
     }
+
     public function rejectLoan(Loan $loan){
     if($loan->status!='103' or $loan->status=='106' ){
-        Alert::error('Error', "You can only reject a loan if it is waiting for authorisation")->showConfirmButton('Close', '#b92b27');
+        Alert::error('Error', "You can only rollback a loan if it is waiting for authorisation")->showConfirmButton('Close', '#b92b27');
         return back();
     }
 
     if(auth()->user()->branch!=$loan->branch){
-        Alert::error('Error', "This loan was opened under a different branch than you are. Ask someone from ".$loan->branch." to reject the loan")->showConfirmButton('Close', '#b92b27');
+        Alert::error('Error', "This loan was opened under a different branch than you are. Ask supervisor from ".$loan->branch." to reject the loan")->showConfirmButton('Close', '#b92b27');
         return back();
     }
+        if(auth()->user()->name!=$loan->captured_by){
+            Alert::error('Error', "You can only roll back a loan that you have captured")->showConfirmButton('Close', '#b92b27');
+            return back();
+        }
     $loan->status="106";
     $loan->authorised_by=auth()->user()->name;
     $loan->save();
@@ -182,7 +219,6 @@ class LoanController extends Controller
         $reject->account_number=$loan->account_number;
         $reject->loan_id=$loan->loan_id.str_random(4);
         $reject->client_id=$loan->client_id;
-        $reject->asset_number=$loan->asset_number;
         $reject->loan_amount=$loan->loan_amount;
         $reject->establishment_date=$loan->establishment_date;
         $reject->end_date=$loan->end_date;
@@ -205,15 +241,21 @@ class LoanController extends Controller
         $loan->delete();
         $pena=Penalty::where('loan_id',$loan->loan_id)->first();
         $pena->delete();
+        $assetLoan=AssetLoan::where('loan_id',$loan->loan_id)->get();
+        foreach ($assetLoan as $nums){
+            $ass = Asset::where('asset_number',$nums->asset_number)->first();
+            if($ass) {
+                $ass->status = "102";
+                $ass->save();
+            }
+            $nums->delete();
+        }
 
-
-    $ass = Asset::where('asset_number',$loan->asset_number)->first();
-    if($ass)
-    {
-        $ass->status = '102';
-        $ass->save();
-    }
-    return redirect()->route('loans')->withSuccessMessage("Loan ".$loan->loan_id." Successfully rejected");
+       $sheds=LoanSchedule::where('loan_id',$loan->loan_id)->get();
+        foreach ($sheds as $shed){
+            $shed->delete();
+        }
+    return redirect()->route('loans')->withSuccessMessage("Loan ".$loan->loan_id." Successfully rolled back");
 
 }
 

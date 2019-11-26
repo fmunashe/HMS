@@ -10,7 +10,6 @@ class Loan extends Model
         'account_number',
         'loan_id',
         'client_id',
-        'asset_number',
         'loan_amount',
         'establishment_date',
         'end_date',

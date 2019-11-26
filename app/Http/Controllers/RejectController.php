@@ -19,10 +19,7 @@ class RejectController extends Controller
         $rejections=Reject::where('branch',auth()->user()->branch)->get();
         return view('rejections.index',compact('rejections'));
     }
-    public function roles()
-    {
-        return view('roles.index');
-    }
+
     public function unauthorised()
     {
         $unauthorised=Loan::where('branch',auth()->user()->branch)->where('status','103')->get();

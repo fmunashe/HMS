@@ -51,6 +51,8 @@ Route::get('/editAsset/{asset}','AssetController@edit')->name('editAsset');
 Route::get('/deleteAsset/{asset}','AssetController@destroy')->name('deleteAsset');
 Route::put('/updateAsset/{asset}','AssetController@update')->name('updateAsset');
 Route::get('/showAsset/{asset}','AssetController@show')->name('showAsset');
+Route::post('/importAsset','AssetController@import')->name('importAsset');
+Route::get('/importFile','AssetController@importFile')->name('importFile');
 //Currency Configuration Routes
 Route::get('/currencies','CurrencyController@index')->name('currencies');
 Route::get('/createCurrency','CurrencyController@create')->name('createCurrency');
@@ -75,6 +77,7 @@ Route::get('/editInstallment/{installment}','InstallmentController@edit')->name(
 Route::get('/deleteInstallment/{installment}','InstallmentController@destroy')->name('deleteInstallment');
 Route::put('/updateInstallment/{installment}','InstallmentController@update')->name('updateInstallment');
 Route::get('/showInstallment/{installment}','InstallmentController@show')->name('showInstallment');
+Route::get('/returnId','InstallmentController@clientId')->name('returnClientId');
 //Loans Routes
 Route::get('/loans','LoanController@index')->name('loans');
 Route::get('/createLoan','LoanController@create')->name('createLoan');
@@ -109,5 +112,21 @@ Route::get('/editReject/{reject}','RejectController@edit')->name('editReject');
 Route::get('/deleteReject/{reject}','RejectController@destroy')->name('deleteReject');
 Route::put('/updateReject/{reject}','RejectController@update')->name('updateReject');
 Route::get('/showReject/{reject}','RejectController@show')->name('showReject');
+//Users Configuration routes
+Route::get('/users','UserController@index')->name('users');
+Route::get('/createUser','UserController@create')->name('createUser');
+Route::post('/createUser','UserController@store')->name('createUser');
+Route::get('/editUser/{user}','UserController@edit')->name('editUser');
+Route::put('/updateUser/{user}','UserController@update')->name('updateUser');
+Route::get('/deleteUser/{user}','UserController@destroy')->name('deleteUser');
+//Permissions Configuration routes
+Route::get('/permissions','PermissionController@index')->name('permissions');
+Route::get('/createPermission','PermissionController@create')->name('createPermission');
+Route::post('/createPermission','PermissionController@store')->name('createPermission');
+Route::get('/deletePermission/{permission}','PermissionController@destroy')->name('deletePermission');
 //Roles Configuration routes
-Route::get('/roles','RejectController@roles')->name('roles');
+Route::get('/roles','RoleController@index')->name('roles');
+Route::get('/createRole','RoleController@create')->name('createRole');
+Route::post('/createRole','RoleController@store')->name('createRole');
+Route::get('/deleteRole/{role}','RoleController@destroy')->name('deleteRole');
+Route::get('/showRole/{role}','RoleController@show')->name('showRole');

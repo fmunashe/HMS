@@ -27,6 +27,7 @@ class AssetRequest extends FormRequest
             //
             'asset_number'=>'required|unique:assets',
             'asset_name'=>'required',
+            'asset_value'=>'required|numeric',
             'asset_description'=>'required'
         ];
     }
