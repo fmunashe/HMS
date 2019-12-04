@@ -39,6 +39,7 @@ class HomeController extends Controller
 
     public function index()
     {
+
         $customers = Customer::all()->groupBy('branch_code');
 //       // dd($customers);
 //        foreach ($customers as $customer){

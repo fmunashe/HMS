@@ -8,7 +8,10 @@ use App\Http\Requests\InstallmentRequest;
 use App\Installment;
 use App\Loan;
 use App\LoanSchedule;
+use App\Notifications\AuthorizeInstallment;
+use App\Notifications\AuthorizeLoan;
 use App\Penalty;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -62,18 +65,22 @@ class InstallmentController extends Controller
                 $installment->status='103';
                 $installment->captured_by = auth()->user()->name;
 
-                $loan=Loan::where('loan_id',$installment->loan_id)->first();
+                $loan=Loan::query()->where('loan_id',$installment->loan_id)->first();
                 if($loan){
                     if($loan->status=='106' or $loan->status=='107' or $loan->status=='103'){
                         Alert::error('Error', "You cannot pay installments for this loan.Either the loan was fully paid, rolled back or awaiting authorisation. Please verify ".$installment->loan_id)->showConfirmButton('Close', '#b92b27');
                         return back()->withInput();
                     }
-//                    $loan->paid_amount=round($loan->paid_amount+$installment->amount,2);
-//                    $loan->outstanding=round($loan->outstanding-$installment->amount,2);
-//                    $loan->status='105';
-//                    $loan->save();
                 }
                 $installment->save();
+
+                //Code to send authorisation notification
+                $users=User::query()->where('branch',auth()->user()->branch)->role('authorizer')->get();
+                foreach($users as $user){
+                    $us=new User();
+                    $us->email=$user->email;
+                    $us->notify(new AuthorizeInstallment($user,$installment));
+                }
                 return redirect()->route('installments')->withSuccessMessage("Installment Recorded");
             }
             else{

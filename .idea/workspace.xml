@@ -2,71 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b253f6ac-ce7f-4fb0-b0b5-4df51a151328" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/customers/showCustomerLoans.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/loans/showAll.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/schedules/maturity.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/schedules/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/HMS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/HMS.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/fzihove.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/fzihove.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Asset.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Asset.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/AssetLoan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/AssetLoan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Branch.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Branch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Commands/CalculatePenalts.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/CalculatePenalts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Commands/CloseLoans.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/CloseLoans.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Commands/EmailAdvice.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/EmailAdvice.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Currency.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Currency.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Customer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Facility.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Facility.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AssetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AssetController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InstallmentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InstallmentController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LoanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LoanController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/InstallmentRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/InstallmentRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Installment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Installment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Interest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Interest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Loan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Loan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/LoanSchedule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/LoanSchedule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Penalty.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Penalty.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Reject.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Reject.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repayment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repayment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Status.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Status.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/mail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_14_152459_create_installments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_14_152459_create_installments_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_15_080547_create_loans_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_15_080547_create_loans_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_22_071852_create_loan_schedules_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_22_071852_create_loan_schedules_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/BranchTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/BranchTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/PermissionsSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/PermissionsSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/assets/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/assets/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/branches/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/branches/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/customers/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customers/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/installments/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/installments/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/installments/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/installments/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/installments/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/installments/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/installments/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/audit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Notifications/AuthorizeLoan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/AuthorizeLoan.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/loans/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/loans/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/loans/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/loans/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/loans/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/loans/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/rejections/myLoans.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/rejections/myLoans.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/rejections/unauthorised.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/rejections/unauthorised.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/schedules/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/schedules/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/logs/laravel-2019-11-21.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/logs/laravel-2019-11-22.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/logs/laravel-2019-11-25.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/logs/laravel-2019-11-26.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/logs/laravel-2019-12-04.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel-2019-12-04.log" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -82,19 +24,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/InstallmentController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="177" column="53" lean-forward="true" selection-start-line="177" selection-start-column="53" selection-end-line="177" selection-end-column="53" />
+            <state relative-caret-position="352">
+              <caret line="76" column="57" lean-forward="true" selection-start-line="76" selection-start-column="57" selection-end-line="76" selection-end-column="57" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Console/Commands/EmailAdvice.php">
+        <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="49" column="36" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
+            <state relative-caret-position="270">
+              <caret line="96" column="44" lean-forward="true" selection-start-line="96" selection-start-column="44" selection-end-line="96" selection-end-column="44" />
               <folding>
-                <element signature="e#40#57#0#PHP" expanded="true" />
+                <element signature="e#7#389#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -103,7 +45,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
+            <state relative-caret-position="104">
               <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
               <folding>
                 <element signature="e#40#54#0#PHP" expanded="true" />
@@ -113,12 +55,36 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/LoanSchedule.php">
+        <entry file="file://$PROJECT_DIR$/app/Notifications/LoanAdvice.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+            <state relative-caret-position="189">
+              <caret line="54" column="56" lean-forward="true" selection-start-line="54" selection-start-column="56" selection-end-line="54" selection-end-column="56" />
               <folding>
-                <element signature="e#23#62#0#PHP" expanded="true" />
+                <element signature="e#37#54#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Console/Commands/EmailAdvice.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="53" column="63" lean-forward="true" selection-start-line="51" selection-start-column="12" selection-end-line="53" selection-end-column="63" />
+              <folding>
+                <element signature="e#40#57#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LoanController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="426">
+              <caret line="163" column="42" selection-start-line="163" selection-start-column="42" selection-end-line="163" selection-end-column="42" />
+              <folding>
+                <element signature="e#40#54#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -138,9 +104,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/rejections/unauthorised.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/customers/branchCustomers.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/customers/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/loans/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/users/index.blade.php" />
         <option value="$PROJECT_DIR$/routes/api.php" />
@@ -165,30 +128,33 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_11_14_152459_create_installments_table.php" />
         <option value="$PROJECT_DIR$/database/seeds/BranchTableSeeder.php" />
         <option value="$PROJECT_DIR$/app/Installment.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/LoanController.php" />
         <option value="$PROJECT_DIR$/resources/views/loans/showAll.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/schedules/maturity.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/schedules/show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/schedules/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/loans/create.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/installments/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/loans/show.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_11_22_071852_create_loan_schedules_table.php" />
         <option value="$PROJECT_DIR$/resources/views/rejections/myLoans.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/InstallmentController.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_11_15_080547_create_loans_table.php" />
         <option value="$PROJECT_DIR$/app/Console/Commands/CloseLoans.php" />
         <option value="$PROJECT_DIR$/app/Console/Commands/CalculatePenalts.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/app/LoanSchedule.php" />
         <option value="$PROJECT_DIR$/app/Customer.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/config/mail.php" />
         <option value="$PROJECT_DIR$/app/Console/Commands/EmailAdvice.php" />
         <option value="$PROJECT_DIR$/app/Notifications/LoanAdvice.php" />
         <option value="$PROJECT_DIR$/app/Console/Kernel.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/LoanController.php" />
+        <option value="$PROJECT_DIR$/resources/views/rejections/unauthorised.blade.php" />
+        <option value="$PROJECT_DIR$/app/Notifications/AuthorizeLoan.php" />
+        <option value="$PROJECT_DIR$/app/Notifications/AuthorizeInstallment.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/InstallmentController.php" />
       </list>
     </option>
   </component>
@@ -320,7 +286,31 @@
             <path>
               <item name="HMS" type="b2602c69:ProjectViewProjectNode" />
               <item name="HMS" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HMS" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Notifications" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HMS" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HMS" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HMS" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="rejections" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -386,18 +376,18 @@
       <workItem from="1575182988775" duration="17836000" />
       <workItem from="1575266337662" duration="19076000" />
       <workItem from="1575352567291" duration="37160000" />
-      <workItem from="1575440924522" duration="20053000" />
+      <workItem from="1575440924522" duration="28336000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="557740000" />
+    <option name="totallyTimeSpent" value="566023000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15951742" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15951742" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -423,26 +413,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/AssetLoan.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
-          <folding>
-            <element signature="e#23#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Branch.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
-          <folding>
-            <element signature="e#23#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Currency.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -662,43 +632,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/rejections/unauthorised.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/rejections/index.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LoanController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3054">
-          <caret line="295" column="22" lean-forward="true" selection-start-line="295" selection-start-column="22" selection-end-line="295" selection-end-column="22" />
-          <folding>
-            <element signature="e#40#54#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/installments/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
           <caret line="9" column="247" selection-start-line="9" selection-start-column="247" selection-end-line="9" selection-end-column="247" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="68" column="24" lean-forward="true" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="95" column="32" lean-forward="true" selection-start-line="95" selection-start-column="32" selection-end-line="95" selection-end-column="32" />
-          <folding>
-            <element signature="e#7#389#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -747,16 +687,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
-          <folding>
-            <element signature="e#40#54#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="800">
@@ -795,13 +725,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Notifications/LoanAdvice.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="54" column="56" lean-forward="true" selection-start-line="54" selection-start-column="56" selection-end-line="54" selection-end-column="56" />
-          <folding>
-            <element signature="e#37#54#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="412">
+          <caret line="39" column="73" selection-start-line="39" selection-start-column="73" selection-end-line="39" selection-end-column="73" />
         </state>
       </provider>
     </entry>
@@ -815,20 +742,87 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+          <folding>
+            <element signature="e#40#54#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Console/Commands/EmailAdvice.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="49" column="36" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
+        <state relative-caret-position="420">
+          <caret line="53" column="63" lean-forward="true" selection-start-line="51" selection-start-column="12" selection-end-line="53" selection-end-column="63" />
           <folding>
             <element signature="e#40#57#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/rejections/unauthorised.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="32" column="69" selection-start-line="32" selection-start-column="69" selection-end-line="32" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="96" column="44" lean-forward="true" selection-start-line="96" selection-start-column="44" selection-end-line="96" selection-end-column="44" />
+          <folding>
+            <element signature="e#7#389#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Notifications/LoanAdvice.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="54" column="56" lean-forward="true" selection-start-line="54" selection-start-column="56" selection-end-line="54" selection-end-column="56" />
+          <folding>
+            <element signature="e#37#54#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Notifications/AuthorizeInstallment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="52" column="60" selection-start-line="52" selection-start-column="60" selection-end-line="52" selection-end-column="60" />
+          <folding>
+            <element signature="e#37#57#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Notifications/AuthorizeLoan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="54" column="40" lean-forward="true" selection-start-line="54" selection-start-column="40" selection-end-line="54" selection-end-column="40" />
+          <folding>
+            <element signature="e#37#50#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LoanController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="163" column="42" selection-start-line="163" selection-start-column="42" selection-end-line="163" selection-end-column="42" />
+          <folding>
+            <element signature="e#40#54#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/InstallmentController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="177" column="53" lean-forward="true" selection-start-line="177" selection-start-column="53" selection-end-line="177" selection-end-column="53" />
+        <state relative-caret-position="352">
+          <caret line="76" column="57" lean-forward="true" selection-start-line="76" selection-start-column="57" selection-end-line="76" selection-end-column="57" />
         </state>
       </provider>
     </entry>

@@ -10,9 +10,11 @@ use App\Installment;
 use App\Interest;
 use App\Loan;
 use App\LoanSchedule;
+use App\Notifications\AuthorizeLoan;
 use App\Penalty;
 use App\Reject;
 use App\Repayment;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoanRequest;
@@ -70,7 +72,7 @@ class LoanController extends Controller
             Alert::error("Error","We have no reference for a client with ID ".$request->input('client_id'))->showConfirmButton('Close', '#b92b27');
                 return redirect()->route('myLoans');
         }
-        $account=Customer::where('national_id',$request->input('client_id'))->first();
+        $account=Customer::query()->where('national_id',$request->input('client_id'))->first();
         $loan->account_number=$account->account;
         $loan->client_id=$request->input('client_id');
         $loan->loan_amount=$request->input('loan_amount');
@@ -153,6 +155,16 @@ class LoanController extends Controller
             }
         }
         //end of amortisation calculation
+
+        //Code to send authorisation notification
+        $users=User::query()->where('branch',auth()->user()->branch)->role('authorizer')->get();
+        foreach($users as $user){
+            $us=new User();
+            $us->email=$user->email;
+            $us->notify(new AuthorizeLoan($user,$loan));
+        }
+
+
         return redirect()->route('myLoans')->withSuccessMessage("Loan application sent for Authorisation");
     }
 

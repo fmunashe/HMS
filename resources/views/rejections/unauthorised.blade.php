@@ -30,7 +30,7 @@
                             <td>{{$loan->period}}</td>
                             <td>@if($loan->status=="103" or $loan->status=="106" or $loan->status=="108")<i class="custom-badge badge-danger-border">{{$loan->StatusName($loan->status)}}</i>@else<i class="custom-badge badge-success-border">{{$loan->StatusName($loan->status)}}</i>@endif</td>
                             <td>{{$loan->paid_amount}}</td>
-                            <td>{{$loan->outstanding}}</td>
+                            <td>{{number_format($loan->outstanding,2)}}</td>
                             <td>
                                 <div class="dropdown dropdown-action">
                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>

@@ -36,8 +36,8 @@
                     <span>{{auth()->user()->name}}</span>
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">My Profile</a>
-                       <a class="dropdown-item" href="{{ route('logout') }}"
+                    <i class="status-green">Role: {{auth()->user()->getRoleNames()[0]}}</i>
+                       <a class="dropdown-item custom-badge badge-danger" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}

@@ -2,29 +2,28 @@
 
 namespace App\Notifications;
 
-use App\Loan;
+use App\Installment;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class AuthorizeLoan extends Notification
+class AuthorizeInstallment extends Notification
 {
     use Queueable;
-    public $user,$loan;
-
+    public $user,$installment;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(User $user,Loan $loan)
+    public function __construct(User $user,Installment $installment)
     {
         //
-        $this->loan=$loan;
         $this->user=$user;
+        $this->installment=$installment;
     }
 
     /**
@@ -47,11 +46,11 @@ class AuthorizeLoan extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Loan Authorisation') // it will use this class name if you don't specify
+            ->subject('Installment Authorisation') // it will use this class name if you don't specify
             ->greeting('Good day '.$this->user->name) // example: Dear Sir, Hello Madam, etc ...
             ->level('success')// It is kind of email. Available options: info, success, error. Default: info
-            ->line('A new loan captured requires your authorisation. Please logon to Loans Facility or click the button below to authorize the loan')
-            ->action('Authorize', url('/authorizeLoan/'.$this->loan->id))
+            ->line('A new installment captured requires your authorisation. Please logon to Loans Facility or click the button below to authorize the installment')
+            ->action('Authorize', url('/authorizeInstallment/'.$this->installment->id))
             ->line('Thank you for using the loans facility!');
     }
 
