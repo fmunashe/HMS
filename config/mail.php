@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'fzihove@agribank.co.zw'),
-        'name' => env('MAIL_FROM_NAME', 'Echannels'),
+        'name' => env('MAIL_FROM_NAME', 'Agribank Loans Department'),
     ],
 
     /*

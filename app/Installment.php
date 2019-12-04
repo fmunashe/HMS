@@ -3,11 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Installment extends Model
+class Installment extends Model implements Auditable
 {
     //
-    protected $fillable=['client_id','loan_id','account_number','amount','currency','installment_number','ft_reference','captured_by'];
+    use \OwenIt\Auditing\Auditable;
+    protected $fillable=['loan_id','amount','currency','ft_reference','effective_date','captured_by','status','authorised_by'];
     public function days($frequency){
         $freq=Repayment::where('frequency_number',$frequency)->first();
         if($freq->frequency_number=='12'){
@@ -25,4 +27,10 @@ class Installment extends Model
         return $days;
     }
 
+    public function StatusName($code){
+        $name=Status::where('status_code',$code)->first();
+        return $name->status_name;
+
+
+    }
 }

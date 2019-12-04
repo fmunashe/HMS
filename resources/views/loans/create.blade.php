@@ -145,7 +145,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label">Period</label>
+                                <label class="col-md-3 col-form-label">Tenor</label>
                                 <div class="col-md-9">
                                     <input id="period" type="number" min="1" class="form-control @error('period') is-invalid @enderror" name="period" value="{{ old('period') }}"  autocomplete="period" readonly autofocus>
                                     @error('period')
@@ -230,7 +230,7 @@
             interest=+(document.getElementById('applicable_interest').value);
 
             installmentAmount=(principal*(interest/frequency))/(1-(Math.pow(1+(interest/frequency),-totalInstallments)));
-            document.getElementById('installment_amount').value=installmentAmount.toFixed(2);
+            document.getElementById('installment_amount').value=installmentAmount;
 
             // closing=principal;
             // for(i=0;i<totalInstallments;i++){

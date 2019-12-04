@@ -25,6 +25,11 @@ class CustomerController extends Controller
         return view('customers.index',compact('customers'));
     }
 
+    public function branchCustomers(){
+        $customers=Customer::where('branch_code',auth()->user()->branch)->get();
+        return view('customers.branchCustomers',compact('customers'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -69,6 +74,11 @@ class CustomerController extends Controller
         //
         $loans =Loan::where('client_id',$customer->national_id)->get();
         return view('customers.customerLoans',compact('loans','customer'));
+    }
+
+    public function showCustomer(Customer $customer){
+        $loans =Loan::where('client_id',$customer->national_id)->get();
+        return view('customers.showCustomerLoans',compact('loans','customer'));
     }
 
     /**
@@ -121,6 +131,11 @@ class CustomerController extends Controller
     public function destroy(Customer $customer)
     {
         //
+        $check=Loan::where('client_id',$customer->national_id)->exists();
+        if($check){
+            Alert::error('Error', "Customer has open loans and cannot be removed from the system")->showConfirmButton('Close', '#b92b27');
+            return back();
+        }
         $customer->delete();
         return redirect()->route('customers')->withSuccessMessage("Client Successfully removed from the system");
     }

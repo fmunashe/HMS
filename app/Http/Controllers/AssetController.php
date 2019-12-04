@@ -5,13 +5,9 @@ namespace App\Http\Controllers;
 use App\Asset;
 use App\Http\Requests\AssetRequest;
 use App\Imports\AssetImport;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Maatwebsite\Excel\Facades\Excel;
-use Maatwebsite\Excel\Validators\ValidationException;
 use RealRashid\SweetAlert\Facades\Alert;
-
 class AssetController extends Controller
 {
     /**
@@ -19,6 +15,8 @@ class AssetController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
         //
@@ -68,9 +66,11 @@ class AssetController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function importFile(){
+
     return view('assets.importFile');
     }
     public function import( Request $request){
+
         $validator = Validator::make($request->all(), [
             'assetFile' => 'required|mimes:xls,xlsx,csv,txt'
         ]);
@@ -135,7 +135,7 @@ class AssetController extends Controller
     {
         //
         if($asset->status!='102'){
-            Alert::error("Error","Allocated and Reserved assets cannot be deleted")->showConfirmButton('Close','#b92b27');
+            Alert::error("Error","Allocated and Reserved assets cannot be removed from the system")->showConfirmButton('Close','#b92b27');
             return back();
         }
         $asset->delete();

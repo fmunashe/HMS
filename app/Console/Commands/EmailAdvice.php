@@ -4,14 +4,15 @@ namespace App\Console\Commands;
 
 use App\Customer;
 use App\Loan;
-use App\Mail\AdviceMail;
-use App\Penalty;
+use App\LoanSchedule;
+use App\Notifications\LoanAdvice;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Notifications\Notifiable;
 
 class EmailAdvice extends Command
 {
+    use Notifiable;
     /**
      * The name and signature of the console command.
      *
@@ -43,11 +44,14 @@ class EmailAdvice extends Command
      */
     public function handle()
     {
-        $penalts=Penalty::where('due_date','<=',Carbon::now()->addDays(5))->get();
-        foreach($penalts as $penalt){
-            $loan=Loan::where('loan_id',$penalt->loan_id)->first();
-            $customer = Customer::where('national_id',$loan->client_id)->first();
-            Mail::to($customer->email)->send(new AdviceMail($customer));
+        $date=Carbon::now()->addDays(5)->format('Y-m-d');
+        $schedules=LoanSchedule::query()->where('end_date','<=',$date)->where('status',false)->get();
+        foreach ($schedules as $schedule){
+            $loan=Loan::query()->where('loan_id',$schedule->loan_id)->first();
+            $customer = Customer::query()->where('national_id',$loan->client_id)->first();
+            $cust=new Customer();
+            $cust->email=$customer->email;
+            $cust->notify(new LoanAdvice($customer,$schedule));
         }
     }
 }

@@ -37,7 +37,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Email Address</label>
+                        <label>Agribank Email Address</label>
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                         @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -50,7 +50,7 @@
                         <select id="branch" class="form-control @error('branch') is-invalid @enderror" name="branch" value="{{ old('branch') }}" required autocomplete="branch">
                         <option value="">Select your branch</option>
                          @foreach($branches as $branch)
-                             <option value="{{$branch->branch_code}}">{{$branch->branch_code."  ".$branch->branch_name}}</option>
+                             <option value="{{$branch->branch_code}}">{{$branch->branch_name}}</option>
                          @endforeach
                         </select>
                         @error('branch')

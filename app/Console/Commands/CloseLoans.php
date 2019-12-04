@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Loan;
+use App\LoanSchedule;
 use App\Penalty;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -41,12 +42,16 @@ class CloseLoans extends Command
     public function handle()
     {
         //
-        $penalts=Penalty::where('remaining_installments',0)->get();
-        foreach($penalts as $penalt){
-            $loan=Loan::where('loan_id',$penalt->loan_id)->first();
-            $loan->status=107;
-            $loan->save();
-            $penalt->delete();
+        $loans =Loan::query()->where('outstanding','<=',0)->get();
+        foreach ($loans as $loan){
+        $schedules=LoanSchedule::query()->where('loan_id',$loan->loan_id)->get();
+        foreach ($schedules as $schedule){
+          $schedule->overdue=0;
+          $schedule->status=true;
+          $schedule->save();
+        }
+         $loan->status=107;
+         $loan->save();
         }
     }
 }

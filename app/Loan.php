@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Loan extends Model
+class Loan extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     protected $fillable=[
         'account_number',
         'loan_id',
@@ -36,5 +38,10 @@ class Loan extends Model
     public function FrequencyName($frequency_number){
         $name=Repayment::where('frequency_number','=',$frequency_number)->first();
         return $name->frequency_name;
+    }
+
+    public function BranchName($code){
+        $name=Branch::where('branch_code',$code)->first();
+        return $name->branch_name;
     }
 }

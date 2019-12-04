@@ -15,14 +15,14 @@ class CreateInstallmentsTable extends Migration
     {
         Schema::create('installments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('client_id');
             $table->string('loan_id');
-            $table->string('account_number');
             $table->string('amount');
             $table->string('currency');
-            $table->string('installment_number');
             $table->string('ft_reference');
+            $table->string('effective_date');
             $table->string('captured_by');
+            $table->string('authorised_by')->nullable();
+            $table->string('status');
             $table->timestamps();
         });
     }

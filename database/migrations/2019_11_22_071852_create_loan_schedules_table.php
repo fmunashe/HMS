@@ -18,11 +18,13 @@ class CreateLoanSchedulesTable extends Migration
             $table->string('loan_id');
             $table->string('period');
             $table->string('opening_balance');
-            $table->string('interest');
+            $table->double('interest');
             $table->string('installment');
             $table->string('capital_repayment');
             $table->string('closing_balance');
-            $table->string('overdue')->nullable();
+            $table->double('overdue')->nullable()->default(0);
+            $table->string('paid_amount')->nullable()->default(0);
+            $table->boolean('status')->nullable()->default(false);
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->timestamps();

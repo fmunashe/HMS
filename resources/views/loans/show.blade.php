@@ -3,7 +3,7 @@
     <div class="content">
         <div class="row">
             <div class="col-lg-12">
-                <h4 class="page-title">Loan Details <a href="{{route('loans')}}" class="btn btn-success btn-rounded pull-right"><i class="fa fa-backward"></i> Back</a></h4>
+                <h4 class="page-title">Loan Details <a href="{{route('myLoans')}}" class="btn btn-success btn-rounded pull-right"><i class="fa fa-backward"></i> Back</a></h4>
             </div>
         </div>
         <div class="row">
@@ -64,15 +64,15 @@
                                     <td><h6>Repayment Frequency:</h6></td>
                                     <td>{{$loan->FrequencyName($loan->repayment_frequency)}}</td>
                                     <td><h6>Installment Amount:</h6></td>
-                                    <td>{{$loan->installment_amount}}</td>
+                                    <td>{{number_format($loan->installment_amount,2)}}</td>
                                 </tr>
                                 <tr>
-                                    <td><h6>Period:</h6></td>
+                                    <td><h6>Tenor:</h6></td>
                                     <td>@if($loan->period=="1"){{$loan->period." year"}}@else {{$loan->period." years"}}@endif</td>
                                     <td><h6>Total Installments:</h6></td>
                                     <td>{{$loan->total_installments}}</td>
                                     <td><h6>Branch:</h6></td>
-                                    <td>{{$loan->branch}}</td>
+                                    <td>{{$loan->BranchName($loan->branch)}}</td>
                                 </tr>
                                 <tr>
                                     <td><h6>Interest: </h6></td>
@@ -112,25 +112,29 @@
                             <table class="table table-striped table-hover">
                                 <thead>
                                 <tr>
-                                    <td><h6>#</h6></td>
                                     <td><h6>Period</h6></td>
                                     <td><h6>Opening Balance</h6></td>
                                     <td><h6>Installment</h6></td>
                                     <td><h6>Interest</h6></td>
+                                    <td><h6>Paid Amount</h6></td>
                                     <td><h6>Capital Repayment</h6></td>
                                     <td><h6>Closing Balance</h6></td>
+{{--                                    <td><h6>Start Date</h6></td>--}}
+{{--                                    <td><h6>End Date</h6></td>--}}
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($schedules as $schedule)
                                     <tr>
-                                        <td>{{$schedule->id}}</td>
                                         <td>{{$schedule->period}}</td>
-                                        <td>{{$schedule->opening_balance}}</td>
-                                        <td>{{$schedule->installment}}</td>
-                                        <td>{{$schedule->interest}}</td>
-                                        <td>{{$schedule->capital_repayment}}</td>
-                                        <td>{{$schedule->closing_balance}}</td>
+                                        <td>{{number_format($schedule->opening_balance,2)}}</td>
+                                        <td>{{number_format($schedule->installment,2)}}</td>
+                                        <td>{{number_format($schedule->interest,2)}}</td>
+                                        <td>{{$schedule->paid_amount}}</td>
+                                        <td>{{number_format($schedule->capital_repayment,2)}}</td>
+                                        <td>{{number_format($schedule->closing_balance,2)}}</td>
+{{--                                        <td>{{$schedule->start_date}}</td>--}}
+{{--                                        <td>{{$schedule->end_date}}</td>--}}
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -182,16 +186,16 @@
                                                 <tr>
                                                     <th>Total Payable:</th>
                                                     <td class="text-right text-primary">
-                                                        <h5>{{$loan->total_amount_payable}}</h5>
+                                                        <h5>{{number_format($loan->total_amount_payable,2)}}</h5>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th>Paid Amount:</th>
-                                                    <td class="text-right">{{$loan->paid_amount}}</td>
+                                                    <td class="text-right">{{number_format($loan->paid_amount,2)}}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Outstanding Balance:</th>
-                                                    <td class="text-right">{{$loan->outstanding}}</td>
+                                                    <td class="text-right">{{number_format($loan->outstanding,2)}}</td>
                                                 </tr>
                                                 </tbody>
                                                 <tr>

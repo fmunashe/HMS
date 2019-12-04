@@ -24,13 +24,11 @@ class InstallmentRequest extends FormRequest
     public function rules()
     {
         return [
-            'client_id'=>'required|regex:/^([0-9]{2})+(-[0-9]{6,7})+([a-zA-Z]{1})+([0-9]{2})+$/',
             'loan_id'=>'required',
             'amount'=>'required',
             'currency'=>'required',
-            'account_number'=>'required',
-            'installment_number'=>'required|numeric',
-            'ft_reference'=>'required|size:12|regex:/^(FT[0-9]{5})+([A-Z]{5})+$/',
+            'effective_date'=>'required',
+            'ft_reference'=>'required|unique:installments|size:12|regex:/^(FT[0-9]{5})+([A-Z]{5})+$/',
         ];
     }
 }

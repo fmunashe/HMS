@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Loan;
+use App\LoanSchedule;
 use App\Penalty;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -40,14 +41,12 @@ class CalculatePenalts extends Command
      */
     public function handle()
     {
-        $penalts=Penalty::where('due_date','<',Carbon::now())->get();
-        foreach($penalts as $penalt){
-         $loans=Loan::where('loan_id',$penalt->loan_id)->first();
-         $pena=$loans->applicable_penalt*$penalt->installment_fee;
-         $penalt->penalty_fee=$penalt->penalty_fee+$pena;
-         $loans->outstanding=$loans->outstanding+$pena;
-         $loans->save();
-         $penalt->save();
+        $schedules=LoanSchedule::query()->where('end_date','<',Carbon::now())->where('status',false)->get();
+        foreach ($schedules as $schedule){
+            $loans=Loan::query()->where('loan_id',$schedule->loan_id)->first();
+            $pena=$loans->applicable_penalt*$schedule->installment;
+            $schedule->overdue+=$pena;
+            $schedule->save();
         }
 
     }

@@ -30,7 +30,7 @@ class CreateLoansTable extends Migration
             $table->string('status')->nullable()->default('103');
             $table->string('authorised_by')->nullable();
             $table->double('paid_amount')->default(0);
-            $table->string('outstanding');
+            $table->double('outstanding');
             $table->string('total_installments');
             $table->string('facility_category');
             $table->string('captured_by');

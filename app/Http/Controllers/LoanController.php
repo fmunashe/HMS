@@ -58,8 +58,8 @@ class LoanController extends Controller
     public function store(LoanRequest $request)
     {
         $loan=new Loan();
-        $latestLoan = Loan::orderby('created_at','DESC')->first();
-        $checkClient=Customer::where('national_id',$request->input('client_id'))->exists();
+        $latestLoan = Loan::query()->orderby('created_at','DESC')->first();
+        $checkClient=Customer::query()->where('national_id',$request->input('client_id'))->exists();
         if($latestLoan==null){
             $loan->loan_id = 'LD' . str_pad(1, 7, "0", STR_PAD_LEFT);
         }
@@ -121,37 +121,38 @@ class LoanController extends Controller
         $penalt->penalty_fee=0;
         $penalt->due_date=Carbon::createFromDate($loan->establishment_date)->addDays($due);
         $penalt->save();
+        //code to calculate amortization starts here
         for($i=1;$i<=$loan->total_installments;$i++) {
             $schedule = new LoanSchedule();
-            $check=LoanSchedule::where('loan_id',$loan->loan_id)->exists();
+            $check=LoanSchedule::query()->where('loan_id',$loan->loan_id)->exists();
             if($check){
                 usleep(250000);
-                $latestId= LoanSchedule::where('loan_id',$loan->loan_id)->orderby('created_at','DESC')->first();
+                $latestId= LoanSchedule::query()->where('loan_id',$loan->loan_id)->orderby('created_at','DESC')->first();
                 $schedule->loan_id = $loan->loan_id;
                 $schedule->period=$i;
                 $schedule->opening_balance=$latestId->closing_balance;
-                $schedule->interest=round(($loan->applicable_interest/$loan->repayment_frequency)*($schedule->opening_balance),2);
+                $schedule->interest=($loan->applicable_interest/$loan->repayment_frequency)*($schedule->opening_balance);
                 $schedule->installment=$loan->installment_amount;
-                $schedule->capital_repayment=round($schedule->installment-$schedule->interest,2);
-                $schedule->closing_balance=round($schedule->opening_balance-$schedule->capital_repayment,2);
-                $schedule->start_date=Carbon::now();
-                $schedule->end_date=Carbon::now();
+                $schedule->capital_repayment=$schedule->installment-$schedule->interest;
+                $schedule->closing_balance=round($schedule->opening_balance-$schedule->capital_repayment,4);
+                $schedule->start_date=$latestId->end_date;
+                $schedule->end_date=Carbon::createFromDate($schedule->start_date)->addDays($due);
                 $schedule->save();
             }
             else {
                 $schedule->loan_id = $loan->loan_id;
                 $schedule->period = $i;
                 $schedule->opening_balance = $loan->loan_amount;
-                $schedule->interest =round( ($loan->applicable_interest/$loan->repayment_frequency) * ($schedule->opening_balance),2);
+                $schedule->interest =($loan->applicable_interest/$loan->repayment_frequency) * ($schedule->opening_balance);
                 $schedule->installment = $loan->installment_amount;
-                $schedule->capital_repayment = round($schedule->installment - $schedule->interest,2);
-                $schedule->closing_balance = round($schedule->opening_balance - $schedule->capital_repayment,2);
-                $schedule->start_date = Carbon::now();
-                $schedule->end_date = Carbon::now();
+                $schedule->capital_repayment = $schedule->installment - $schedule->interest;
+                $schedule->closing_balance = round($schedule->opening_balance - $schedule->capital_repayment,4);
+                $schedule->start_date = $loan->establishment_date;
+                $schedule->end_date = Carbon::createFromDate($loan->establishment_date)->addDays($due);
                 $schedule->save();
             }
         }
-
+        //end of amortisation calculation
         return redirect()->route('myLoans')->withSuccessMessage("Loan application sent for Authorisation");
     }
 
@@ -168,6 +169,15 @@ class LoanController extends Controller
        $installments=Installment::where('loan_id',$loan->loan_id)->get();
        $schedules=LoanSchedule::where('loan_id',$loan->loan_id)->get();
        return view('loans.show',compact('loan','client','assets','installments','schedules'));
+    }
+
+    public function showLoan(Loan $loan)
+    {
+        $client=Customer::where('national_id',$loan->client_id)->first();
+        $assets=AssetLoan::where('loan_id',$loan->loan_id)->get();
+        $installments=Installment::where('loan_id',$loan->loan_id)->get();
+        $schedules=LoanSchedule::where('loan_id',$loan->loan_id)->get();
+        return view('loans.showAll',compact('loan','client','assets','installments','schedules'));
     }
 
     public function authorizeLoan(Loan $loan){
@@ -194,7 +204,7 @@ class LoanController extends Controller
                 $ass->save();
             }
         }
-       return redirect()->route('loans')->withSuccessMessage("Loan ".$loan->loan_id." Successfully authorized");
+       return redirect()->route('myLoans')->withSuccessMessage("Loan ".$loan->loan_id." Successfully authorized");
     }
 
     public function rejectLoan(Loan $loan){
@@ -255,7 +265,7 @@ class LoanController extends Controller
         foreach ($sheds as $shed){
             $shed->delete();
         }
-    return redirect()->route('loans')->withSuccessMessage("Loan ".$loan->loan_id." Successfully rolled back");
+    return redirect()->route('myLoans')->withSuccessMessage("Loan ".$loan->loan_id." Successfully rolled back");
 
 }
 

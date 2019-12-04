@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class AssetLoan extends Model
+class AssetLoan extends Model implements Auditable
 {
     //
+    use \OwenIt\Auditing\Auditable;
     protected $fillable=['loan_id','asset_number'];
 
     public function AssetName($number){
