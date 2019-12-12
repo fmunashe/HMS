@@ -36,6 +36,28 @@ class LoanController extends Controller
         return view('loans.index',compact('loans'));
     }
 
+    public function loanMaturity(){
+        $loans=Loan::query()->where('loan_id',null)->get();
+        return view('loans.loanMaturity',compact('loans'));
+    }
+
+    public function searchLoanMaturity(Request $request)
+    {
+        $check = $request->input('searchLoan');
+        if (trim($check) == null) {
+            Alert::error("Search String cannot be empty");
+            return back();
+        }
+        $loans=Loan::query()->where('loan_id',$request->input('searchLoan'))->orWhere('facility_category',$request->input('searchLoan'))->orWhere('branch',$request->input('searchLoan'))->get();
+        if ($loans) {
+            return view('loans.loanMaturity', compact('loans'));
+        } else {
+            Alert::error("search value could not be found");
+            return back();
+        }
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -158,10 +180,12 @@ class LoanController extends Controller
 
         //Code to send authorisation notification
         $users=User::query()->where('branch',auth()->user()->branch)->role('authorizer')->get();
-        foreach($users as $user){
-            $us=new User();
-            $us->email=$user->email;
-            $us->notify(new AuthorizeLoan($user,$loan));
+        if($users) {
+            foreach ($users as $user) {
+                $us = new User();
+                $us->email = $user->email;
+                $us->notify(new AuthorizeLoan($user, $loan));
+            }
         }
 
 
@@ -320,4 +344,32 @@ class LoanController extends Controller
         Alert::error('Error', "Loan cannot be deleted")->showConfirmButton('Close', '#b92b27');
         return back();
     }
+
+
+    public function loanStatement(){
+        $schedules=LoanSchedule::query()->where('loan_id','=',null)->get();
+        $loan=Loan::query()->where('loan_id',null)->first();
+        return view('loans.statement',compact('schedules','loan'));
+    }
+
+    public function searchLoanStatement(Request $request)
+    {
+        $check = $request->input('searchLoan');
+        if (trim($check) == null) {
+            Alert::error("Search String cannot be empty");
+            return back();
+        }
+        $loans=Loan::query()->where('loan_id',$request->input('searchLoan'))->first();
+        if ($loans) {
+            $schedules = LoanSchedule::query()->where('loan_id', $request->input('searchLoan'))->get();
+            $installments=Installment::query()->where('loan_id',$request->input('searchLoan'))->orderBy('updated_at')->get();
+            return view('loans.statement', compact('schedules','loans','installments'));
+        } else {
+            Alert::error("Loan Id could not be found");
+            return back();
+        }
+    }
+
+
+
 }

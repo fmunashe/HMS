@@ -41,12 +41,17 @@ class CalculatePenalts extends Command
      */
     public function handle()
     {
-        $schedules=LoanSchedule::query()->where('end_date','<',Carbon::now())->where('status',false)->get();
-        foreach ($schedules as $schedule){
-            $loans=Loan::query()->where('loan_id',$schedule->loan_id)->first();
-            $pena=$loans->applicable_penalt*$schedule->installment;
-            $schedule->overdue+=$pena;
-            $schedule->save();
+        try {
+            $schedules = LoanSchedule::query()->where('end_date', '<', Carbon::now())->where('status', false)->get();
+            foreach ($schedules as $schedule) {
+                $loans = Loan::query()->where('loan_id', $schedule->loan_id)->first();
+                $pena = $loans->applicable_penalt * $schedule->installment;
+                $schedule->overdue += $pena;
+                $schedule->save();
+            }
+        }
+        catch(\Exception $exception){
+
         }
 
     }

@@ -12,7 +12,7 @@
                         <th>Branch</th>
                         <th>Loan</th>
                         <th>Amount</th>
-                        <th>Period</th>
+                        <th>Tenor</th>
                         <th>Status</th>
                         <th>Paid</th>
                         <th>Outstanding</th>

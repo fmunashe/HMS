@@ -23,6 +23,7 @@ class CreateInstallmentsTable extends Migration
             $table->string('captured_by');
             $table->string('authorised_by')->nullable();
             $table->string('status');
+            $table->string('branch');
             $table->timestamps();
         });
     }

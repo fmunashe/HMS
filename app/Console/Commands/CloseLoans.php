@@ -7,6 +7,7 @@ use App\LoanSchedule;
 use App\Penalty;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use PHPUnit\Exception;
 
 class CloseLoans extends Command
 {
@@ -42,16 +43,21 @@ class CloseLoans extends Command
     public function handle()
     {
         //
-        $loans =Loan::query()->where('outstanding','<=',0)->get();
-        foreach ($loans as $loan){
-        $schedules=LoanSchedule::query()->where('loan_id',$loan->loan_id)->get();
-        foreach ($schedules as $schedule){
-          $schedule->overdue=0;
-          $schedule->status=true;
-          $schedule->save();
+        try {
+            $loans = Loan::query()->where('outstanding', '<=', 0)->get();
+            foreach ($loans as $loan) {
+                $schedules = LoanSchedule::query()->where('loan_id', $loan->loan_id)->get();
+                foreach ($schedules as $schedule) {
+                    $schedule->overdue = 0;
+                    $schedule->status = true;
+                    $schedule->save();
+                }
+                $loan->status = 107;
+                $loan->save();
+            }
         }
-         $loan->status=107;
-         $loan->save();
+        catch(Exception $exception){
+
         }
     }
 }

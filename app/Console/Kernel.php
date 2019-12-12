@@ -31,9 +31,9 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
-        $schedule->command('close:loans')->everyMinute();
-        $schedule->command('email:advice')->everyMinute();
-        $schedule->command('calculate:penalts')->everyMinute();
+        $schedule->command('close:loans')->daily()->between('02:00','0300');
+        $schedule->command('email:advice')->daily()->between('02:00','0300');
+        $schedule->command('calculate:penalts')->daily()->between('02:00','0300');
     }
 
     /**

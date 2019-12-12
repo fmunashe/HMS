@@ -114,9 +114,9 @@
                                 <tr>
                                     <td><h6>Period</h6></td>
                                     <td><h6>Opening Balance</h6></td>
-                                    <td><h6>Installment</h6></td>
+                                    <td><h6>Total Installment Due</h6></td>
                                     <td><h6>Interest</h6></td>
-                                    <td><h6>Paid Amount</h6></td>
+                                    <td><h6>Amount Paid</h6></td>
                                     <td><h6>Capital Repayment</h6></td>
                                     <td><h6>Closing Balance</h6></td>
 {{--                                    <td><h6>Start Date</h6></td>--}}

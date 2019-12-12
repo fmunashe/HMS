@@ -21,7 +21,11 @@ Auth::routes();
 
 //Branch routes
 Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware(['auth','role:administrator|auditor'])->group( function() {
 Route::get('/audits','HomeController@audits')->name('audits');
+Route::get('/allInstallments','InstallmentController@allInstallments')->name('allInstallments');
+
+});
 Route::middleware(['auth','role:administrator'])->group( function() {
     Route::get('/branches', 'BranchController@index')->name('branches');
     Route::get('/createBranch', 'BranchController@create')->name('createBranch');
@@ -171,6 +175,11 @@ Route::middleware(['auth','role:administrator'])->group( function() {
 //Routes for loan schedules
 Route::get('/schedules','LoanScheduleController@index')->name('schedules');
 Route::get('/searchLoan','LoanScheduleController@searchLoan')->name('searchLoan');
-Route::get('/maturityReport','LoanScheduleController@maturity')->name('maturityReport');
-Route::get('/searchMaturity','LoanScheduleController@searchMaturity')->name('searchMaturity');
+//Route::get('/maturityReport','LoanScheduleController@maturity')->name('maturityReport');
+//Route::get('/searchMaturity','LoanScheduleController@searchMaturity')->name('searchMaturity');
 Route::get('/showMaturity/{loan}','LoanScheduleController@showMaturity')->name('showMaturity');
+Route::get('/loanMaturity','LoanController@loanMaturity')->name('loanMaturity');
+Route::get('/searchLoanMaturity','LoanController@searchLoanMaturity')->name('searchLoanMaturity');
+
+Route::get('/loanStatement','LoanController@loanStatement')->name('loanStatement');
+Route::get('/searchLoanStatement','LoanController@searchLoanStatement')->name('searchLoanStatement');

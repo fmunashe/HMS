@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @section('content')
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card-box">
-                <div class="col-lg-12 col-xs-12">
-                    {!! $realtime->html() !!}
-                </div>
-            </div>
-        </div>
-    </div>
+{{--    <div class="row">--}}
+{{--        <div class="col-lg-12">--}}
+{{--            <div class="card-box">--}}
+{{--                <div class="col-lg-12 col-xs-12">--}}
+{{--                    {!! $realtime->html() !!}--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <div class="row">
         <div class="col-lg-6">
             <div class="card-box">
@@ -46,7 +46,7 @@
     {!! Charts::scripts() !!}
     {!! $data->script() !!}
     {!! $clients->script() !!}
-    {!! $realtime->script() !!}
+{{--    {!! $realtime->script() !!}--}}
     {!! $totalloans->script() !!}
     {!! $unauthorised->script() !!}
 @endsection

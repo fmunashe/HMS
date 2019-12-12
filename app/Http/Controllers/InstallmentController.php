@@ -28,8 +28,13 @@ class InstallmentController extends Controller
         if(session('success_message')){
             Alert::success('success', session('success_message'))->showConfirmButton('Close', '#0f9b0f');
         }
-        $installments=Installment::all();
+        $installments=Installment::query()->where('branch',auth()->user()->branch)->get();
         return view('installments.index',compact('installments'));
+    }
+
+    public function allInstallments(){
+        $installments=Installment::all();
+        return view('installments.allInstallments',compact('installments'));
     }
 
     /**
@@ -54,7 +59,7 @@ class InstallmentController extends Controller
     public function store(InstallmentRequest $request)
     {
         //
-            $checkLoan=Loan::where('loan_id',$request->input('loan_id'))->exists();
+            $checkLoan=Loan::query()->where('loan_id',$request->input('loan_id'))->exists();
             if($checkLoan) {
                 $installment = new Installment();
                 $installment->loan_id = $request->input('loan_id');
@@ -64,7 +69,7 @@ class InstallmentController extends Controller
                 $installment->effective_date=$request->input('effective_date');
                 $installment->status='103';
                 $installment->captured_by = auth()->user()->name;
-
+                $installment->branch=auth()->user()->branch;
                 $loan=Loan::query()->where('loan_id',$installment->loan_id)->first();
                 if($loan){
                     if($loan->status=='106' or $loan->status=='107' or $loan->status=='103'){
@@ -75,13 +80,15 @@ class InstallmentController extends Controller
                 $installment->save();
 
                 //Code to send authorisation notification
-                $users=User::query()->where('branch',auth()->user()->branch)->role('authorizer')->get();
-                foreach($users as $user){
-                    $us=new User();
-                    $us->email=$user->email;
-                    $us->notify(new AuthorizeInstallment($user,$installment));
-                }
-                return redirect()->route('installments')->withSuccessMessage("Installment Recorded");
+//                $users=User::query()->where('branch',auth()->user()->branch)->role('authorizer')->get();
+//                if($users) {
+//                    foreach ($users as $user) {
+//                        $us = new User();
+//                        $us->email = $user->email;
+//                        $us->notify(new AuthorizeInstallment($user, $installment));
+//                    }
+//                }
+                return redirect()->route('installments')->withSuccessMessage("Installment sent for authorisation");
             }
             else{
                 Alert::error("Error","Please verify Loan ID and try again")->showConfirmButton('Close', '#b92b27');

@@ -108,7 +108,7 @@ class PermissionsSeeder extends Seeder
         ])->assignRole('administrator');
         User::create([
             'name' => 'Authorizer',
-            'email' => 'authorizer'.'@agribank.co.zw',
+            'email' => 'fzihove'.'@agribank.co.zw',
             'password' => bcrypt('12345678'),
             'branch'=>'ZW0010001',
         ])->assignRole('authorizer');

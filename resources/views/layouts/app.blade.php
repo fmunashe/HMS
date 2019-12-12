@@ -21,7 +21,7 @@
     <div class="header">
         <div class="header-left">
             <a href="{{route('home')}}" class="logo">
-                <img src="{{asset('frontend/assets/img/chikwereti.png')}}" width="50" height="50" alt="">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<span><strong>OBFMS</strong></span>
+                <img src="{{asset('frontend/assets/img/chikwereti2.png')}}" width="50" height="50" alt="">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<span><strong>OBFMS</strong></span>
             </a>
         </div>
         <a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
@@ -65,11 +65,6 @@
                         <a href="{{route('assets')}}"><i class="fa fa-taxi text-success"></i> <span>Assets</span></a>
                     </li>
                     @endhasanyrole
-                    @hasanyrole('administrator|inputter|authorizer')
-                    <li>
-                        <a href="{{route('installments')}}"><i class="fa fa-money text-success"></i> <span>&nbsp;Installments</span></a>
-                    </li>
-                    @endhasanyrole
                     @hasrole('administrator')
                     <li class="submenu">
                         <a href="#"><i class="fa fa-cogs text-success"></i> <span> Configurables </span> <span class="menu-arrow"></span></a>
@@ -91,6 +86,7 @@
                         <ul style="display: none;">
                             <li><a href="{{route('branchCustomers')}}"><i class="fa fa-users text-success"></i><span>  My Clients</span></a></li>
                             <li><a href="{{route('myLoans')}}"><i class="fa fa-suitcase text-success"></i> All my Loans </a></li>
+                            <li><a href="{{route('installments')}}"><i class="fa fa-money text-success"></i> <span>&nbsp;My Installments</span></a></li>
                             <li><a href="{{route('unauthorised')}}"><i class="fa fa-thumbs-o-down text-warning"></i>Unauthorised Loans </a></li>
                            @hasanyrole('administrator|inputter')
                             <li><a href="{{route('rejections')}}"><i class="fa fa-refresh text-danger"></i> Rolled back Loans </a></li>
@@ -103,10 +99,15 @@
                         <a href="#"><i class="fa fa-flag-o text-success"></i> <span> Reports </span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
                             <li><a href="{{route('loans')}}"><i class="fa fa-bitcoin text-success"></i> <span>&nbsp;Loans</span></a></li>
-                            <li><a href="{{route('maturityReport')}}"><i class="fa fa-folder-open-o text-success"></i> Loan Maturity </a></li>
+{{--                            <li><a href="{{route('maturityReport')}}"><i class="fa fa-folder-open-o text-success"></i> Loan Maturity </a></li>--}}
                             <li><a href="{{route('schedules')}}"><i class="fa fa-calendar-times-o text-success"></i>Loan Schedules </a></li>
                             <li><a href="{{route('customers')}}"><i class="fa fa-users text-success"></i> <span>All Clients</span></a></li>
+                            <li><a href="{{route('allInstallments')}}"><i class="fa fa-mobile text-success"></i> <span>All Installments</span></a></li>
+                            <li><a href="{{route('loanMaturity')}}"><i class="fa fa-folder-open-o text-success"></i> <span>Loan Maturity</span></a></li>
+                            <li><a href="{{route('loanStatement')}}"><i class="fa fa-file-pdf-o text-red"></i> <span>Loan Statements</span></a></li>
+                            @hasanyrole('auditor|administrator')
                             <li><a href="{{route('audits')}}"><i class="fa fa-user-secret text-success"></i> <span>Audited Events</span></a></li>
+                            @endhasanyrole
                         </ul>
                     </li>
                     @endhasanyrole

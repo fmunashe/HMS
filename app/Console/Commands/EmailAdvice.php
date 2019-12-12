@@ -44,14 +44,19 @@ class EmailAdvice extends Command
      */
     public function handle()
     {
-        $date=Carbon::now()->addDays(5)->format('Y-m-d');
-        $schedules=LoanSchedule::query()->where('end_date','<=',$date)->where('status',false)->get();
-        foreach ($schedules as $schedule){
-            $loan=Loan::query()->where('loan_id',$schedule->loan_id)->first();
-            $customer = Customer::query()->where('national_id',$loan->client_id)->first();
-            $cust=new Customer();
-            $cust->email=$customer->email;
-            $cust->notify(new LoanAdvice($customer,$schedule));
+        try {
+            $date = Carbon::now()->addDays(5)->format('Y-m-d');
+            $schedules = LoanSchedule::query()->where('end_date', '<=', $date)->where('status', false)->get();
+            foreach ($schedules as $schedule) {
+                $loan = Loan::query()->where('loan_id', $schedule->loan_id)->first();
+                $customer = Customer::query()->where('national_id', $loan->client_id)->first();
+                $cust = new Customer();
+                $cust->email = $customer->email;
+                $cust->notify(new LoanAdvice($customer, $schedule));
+            }
+        }
+        catch (\Exception $exception){
+
         }
     }
 }

@@ -9,7 +9,7 @@ class Installment extends Model implements Auditable
 {
     //
     use \OwenIt\Auditing\Auditable;
-    protected $fillable=['loan_id','amount','currency','ft_reference','effective_date','captured_by','status','authorised_by'];
+    protected $fillable=['loan_id','amount','currency','ft_reference','effective_date','captured_by','status','authorised_by','branch'];
     public function days($frequency){
         $freq=Repayment::where('frequency_number',$frequency)->first();
         if($freq->frequency_number=='12'){

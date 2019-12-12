@@ -14,9 +14,10 @@
                         <th>#</th>
                         <th>Facility</th>
                         <th>Branch</th>
+                        <th>Customer</th>
                         <th>Loan</th>
                         <th>Payable</th>
-                        <th>Period</th>
+                        <th>Tenor</th>
                         <th>Status</th>
                         <th>Paid</th>
                         <th>Outstanding</th>
@@ -29,12 +30,13 @@
                             <td>{{$loan->id}}</td>
                             <td>{{$loan->facility_category}}</td>
                             <td>{{$loan->BranchName($loan->branch)}}</td>
+                            <td>{{$loan->ClientName($loan->client_id)}}</td>
                             <td>{{$loan->loan_id}}</td>
-                            <td>{{$loan->total_amount_payable}}</td>
+                            <td>{{number_format($loan->total_amount_payable,2)}}</td>
                             <td>{{$loan->period}}</td>
                             <td>@if($loan->status=="103" or $loan->status=="106" or $loan->status=="108")<i class="custom-badge badge-danger-border">{{$loan->StatusName($loan->status)}}</i>@else<i class="custom-badge badge-success-border">{{$loan->StatusName($loan->status)}}</i>@endif</td>
-                            <td>{{round($loan->paid_amount,2)}}</td>
-                            <td>{{round($loan->outstanding,2)}}</td>
+                            <td>{{number_format($loan->paid_amount,2)}}</td>
+                            <td>{{number_format($loan->outstanding,2)}}</td>
                             <td>
                                 <div class="dropdown dropdown-action">
                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>

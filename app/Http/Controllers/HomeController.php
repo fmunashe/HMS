@@ -55,17 +55,17 @@ class HomeController extends Controller
             ->elementLabel('Total Count')
             ->labels(['Total Assets','Available', 'Allocated', 'Reserved'])
             ->values([$assets,$remaining,$allocated,$reserved])
-            ->colors(['#0f9b0f','#f7b733','#b20a2c','#CAC531','#48b1bf','#E100FF','#7F00FF','#667db6','#667db6','#fc4a1a','#302b63'])
+            ->colors(['#0f9b0f','#f7b733','#ffa751','#b20a2c','#CAC531','#48b1bf','#94716B','#F7F8F8','#E100FF','#9796f0','#536976','#7F00FF','#667db6','#667db6','#fbc7d4','#71B280','#fc4a1a','#302b63','#AA076B'])
             ->responsive(true);
         $clients=Charts::database(Customer::all(),'bar','highcharts')
             ->title('Total Clients Per Branch')
-            ->colors(['#302b63','#CAC531','#b20a2c','#0f9b0f','#48b1bf','#E100FF','#7F00FF','#667db6','#00F260','#667db6','#f7b733','#fc4a1a'])
+            ->colors(['#302b63','#CAC531','#b20a2c','#0f9b0f','#F7F8F8','#48b1bf','#E100FF','#ffa751','#7F00FF','#536976','#94716B','#667db6','#00F260','#667db6','#fbc7d4','#9796f0','#AA076B','#f7b733','#71B280','#fc4a1a'])
             ->responsive(true)
             ->ElementLabel('Total Clients')
             ->groupBy('branch_code');
         $totalloans=Charts::database(Loan::all(),'pie','highcharts')
             ->title('Total Loans Per Branch')
-            ->colors(['#48b1bf','#E100FF','#7F00FF','#fc4a1a','#302b63','#CAC531','#00F260','#667db6','#f7b733','#b20a2c','#0f9b0f','#667db6'])
+            ->colors(['#536976','#48b1bf','#E100FF','#7F00FF','#fc4a1a','#302b63','#CAC531','#00F260','#94716B','#667db6','#f7b733','#F7F8F8','#b20a2c','#0f9b0f','#667db6','#AA076B','#ffa751','#fbc7d4','#9796f0','#71B280'])
             ->responsive(true)
             ->ElementLabel('Total Count')
             ->groupBy('branch');
@@ -76,11 +76,12 @@ class HomeController extends Controller
             ->ElementLabel('Total Count')
             ->groupBy('branch');
 
-        $realtime=Charts::realtime(route('realtime'),1000,'line','highcharts')
-            ->title('Realtime Loan Processing')
-            ->responsive(true)
-            ->colors(['#0f9b0f','#f7b733','#b20a2c','#CAC531','#48b1bf','#E100FF','#7F00FF','#667db6','#667db6','#fc4a1a','#302b63']);
+//        $realtime=Charts::realtime(route('realtime'),1000,'bar','highcharts')
+//            ->title('Realtime Loan Processing')
+//            ->responsive(true)
+//            ->ElementLabel('Total Count')
+//            ->colors(['#0f9b0f','#f7b733','#b20a2c','#CAC531','#48b1bf','#E100FF','#7F00FF','#667db6','#667db6','#fc4a1a','#302b63']);
 
-        return view('home',compact('data','clients','realtime','unauthorised','totalloans'));
+        return view('home',compact('data','clients','unauthorised','totalloans'));
     }
 }

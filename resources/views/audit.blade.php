@@ -30,7 +30,7 @@
                     @foreach($audits as $audit)
                         <tr>
                             <td>{{$audit->id}}</td>
-                            <td>{{$audit->user->name}}</td>
+                            <td>{{$audit->user_id}}</td>
                             <td>{{$audit->ip_address}}</td>
                             <td>{{$audit->created_at}}</td>
                             <td>{{$audit->event}}</td>

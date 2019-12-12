@@ -44,4 +44,8 @@ class Loan extends Model implements Auditable
         $name=Branch::where('branch_code',$code)->first();
         return $name->branch_name;
     }
+    public function ClientName($code){
+    $name=Customer::query()->where('national_id',$code)->first();
+    return $name->full_name;
+    }
 }

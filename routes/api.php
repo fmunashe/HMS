@@ -1,6 +1,7 @@
 <?php
 
 use App\Loan;
+use App\User;
 use Illuminate\Http\Request;
 
 /*
@@ -19,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/realtime',function(){
-    $loans=Loan::all()->groupBy('branch')->count();
-return ['value'=>rand(100,1000000)];
+    $loans=User::all()->groupBy('branch')->count();
+return ['value'=>$loans];
+   // ['value'=>rand(100,1000000)];
 })->name('realtime');
