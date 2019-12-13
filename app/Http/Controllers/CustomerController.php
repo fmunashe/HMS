@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Asset;
 use App\Branch;
 use App\Customer;
+use App\Facility;
+use App\Guarantee;
+use App\GuaranteeType;
 use App\Http\Requests\CustomerRequest;
+use App\Interest;
 use App\Loan;
+use App\Repayment;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -26,6 +32,9 @@ class CustomerController extends Controller
     }
 
     public function branchCustomers(){
+        if(session('success_message')){
+            Alert::success('success', session('success_message'))->showConfirmButton('Close', '#0f9b0f');
+        }
         $customers=Customer::where('branch_code',auth()->user()->branch)->get();
         return view('customers.branchCustomers',compact('customers'));
     }
@@ -59,8 +68,21 @@ class CustomerController extends Controller
         $customer->phone=$request->input('phone');
         $customer->address=$request->input('address');
         $customer->save();
-        Alert::success('Success',"Client Successfully registered, Capture their loan details")->showConfirmButton('Close', '#0f9b0f');
-        return redirect()->route('createLoan');
+        if($request->customer_type=="loan_customer") {
+            $id=$customer->national_id;
+            $rates=Interest::all();
+            $facilities=Facility::all();
+            $frequencies=Repayment::all();
+            $assets=Asset::where('status','102')->get();
+            Alert::success('Success',"Client Successfully registered, Capture their loan details")->showConfirmButton('Close', '#0f9b0f');
+            return view('loans.create',compact('rates','facilities','frequencies','assets','id'));
+        }
+        else{
+            $id=$customer->national_id;
+            $guaranteeTypes=GuaranteeType::all();
+            Alert::success('Success',"Client Successfully registered, Capture their guarantee details")->showConfirmButton('Close', '#0f9b0f');
+            return view('Guarantees.create',compact('guaranteeTypes','id'));
+        }
     }
 
     /**
@@ -132,11 +154,16 @@ class CustomerController extends Controller
     {
         //
         $check=Loan::where('client_id',$customer->national_id)->exists();
+        $guara=Guarantee::where('customer_id',$customer->national_id)->exists();
         if($check){
             Alert::error('Error', "Customer has open loans and cannot be removed from the system")->showConfirmButton('Close', '#b92b27');
             return back();
         }
+        if($guara){
+            Alert::error('Error', "Customer has open guarantees and cannot be removed from the system")->showConfirmButton('Close', '#b92b27');
+            return back();
+        }
         $customer->delete();
-        return redirect()->route('customers')->withSuccessMessage("Client Successfully removed from the system");
+        return redirect()->route('branchCustomers')->withSuccessMessage("Client Successfully removed from the system");
     }
 }

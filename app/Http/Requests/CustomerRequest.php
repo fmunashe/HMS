@@ -27,7 +27,7 @@ class CustomerRequest extends FormRequest
             //
             'branch_code'=>'required',
             'full_name'=>'required',
-            'account'=>'required|min:12',
+            'account'=>'required|min:12|unique:customers',
             'national_id'=>'required|regex:/^([0-9]{2})+(-[0-9]{6,7})+([a-zA-Z]{1})+([0-9]{2})+$/',
             'email'=>'required|email|unique:customers',
             'phone'=>'required|numeric|digits_between:5,12',

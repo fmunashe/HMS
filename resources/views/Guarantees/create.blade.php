@@ -9,7 +9,7 @@
                     <div class="form-group row">
                         <label class="col-form-label col-md-2">Customer ID</label>
                         <div class="col-md-4">
-                            <input id="customer_id" type="text" class="form-control @error('customer_id') is-invalid @enderror" name="customer_id" value="{{ old('customer_id') }}"  autocomplete="customer_id" autofocus>
+                            <input id="customer_id" type="text" class="form-control @error('customer_id') is-invalid @enderror" name="customer_id" value="{{ $id }}"  autocomplete="customer_id" autofocus>
                             @error('customer_id')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -78,20 +78,20 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-form-label col-md-2">End Date</label>
-                        <div class="col-md-4">
-                            <input id="end_date" type="date" onchange="check1()" class="form-control @error('end_date') is-invalid @enderror" name="end_date" value="{{ old('end_date') }}"  autocomplete="end_date" autofocus>
-                            @error('end_date')
-                            <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                            @enderror
-                        </div>
+{{--                        <label class="col-form-label col-md-2">End Date</label>--}}
+{{--                        <div class="col-md-4">--}}
+{{--                            <input id="end_date" type="date" onchange="check1()" class="form-control @error('end_date') is-invalid @enderror" name="end_date" value="{{ old('end_date') }}"  autocomplete="end_date" autofocus>--}}
+{{--                            @error('end_date')--}}
+{{--                            <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                            @enderror--}}
+{{--                        </div>--}}
 {{--                    </div>--}}
 {{--                    <div class="form-group row">--}}
                         <label class="col-form-label col-md-2">Tenor (In Days)</label>
                         <div class="col-md-4">
-                            <input id="period" type="text" class="form-control @error('period') is-invalid @enderror" name="period" value="{{ old('period') }}"  autocomplete="period" autofocus readonly>
+                            <input id="period" type="text" class="form-control @error('period') is-invalid @enderror" name="period" value="{{ old('period') }}"  autocomplete="period" autofocus>
                             @error('period')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -125,7 +125,7 @@
             result=timeDiff;
             diffDays=Math.ceil(result / (1000 * 3600 * 24));
             period=Math.ceil(diffDays);
-            document.getElementById('period').value=period;
+            // document.getElementById('period').value=period;
         }
     </script>
 @endsection

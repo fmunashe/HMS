@@ -18,13 +18,23 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label class="col-form-label col-md-2">Customer Type</label>
+                        <div class="col-md-10">
+                            <select type="text" class="form-control " name="customer_type" autofocus required>
+                                <option value="">Select Customer Type</option>
+                                <option value="loan_customer">Loan Customer</option>
+                                <option value="guarantee_customer">Guarantee Customer</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label class="col-form-label col-md-2">Full Name</label>
                         <div class="col-md-10">
                             <input id="full_name" type="text" class="form-control @error('full_name') is-invalid @enderror" name="full_name" value="{{ old('full_name') }}"  autocomplete="full_name" autofocus>
                             @error('full_name')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
-                                    </span>
+                            </span>
                             @enderror
                         </div>
                     </div>

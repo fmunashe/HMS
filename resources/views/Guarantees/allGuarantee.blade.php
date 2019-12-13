@@ -27,9 +27,9 @@
                     @foreach($guarantees as $guarantee)
                         <tr>
                             <td>{{$guarantee->id}}</td>
-                            <td>{{$guarantee->Customer($guarantee->customer_id)}}</td>
-                            <td>{{$guarantee->Branch($guarantee->branch)}}</td>
-                            <td>{{$guarantee->GuaranteeType($guarantee->guarantee_type)}}</td>
+                            <td>@if($guarantee->customer_id=="")@else {{$guarantee->Customer($guarantee->customer_id)}}@endif</td>
+                            <td>@if($guarantee->branch=="") @else {{$guarantee->Branch($guarantee->branch)}}@endif</td>
+                            <td>@if($guarantee->guarantee_type=="") @else {{$guarantee->GuaranteeType($guarantee->guarantee_type)}}@endif</td>
                             <td>{{$guarantee->start_date}}</td>
                             <td>{{$guarantee->end_date}}</td>
                             <td>{{$guarantee->amount_guaranteed}}</td>

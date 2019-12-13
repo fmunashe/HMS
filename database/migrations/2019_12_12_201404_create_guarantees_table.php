@@ -15,6 +15,7 @@ class CreateGuaranteesTable extends Migration
     {
         Schema::create('guarantees', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('guarantee_number');
             $table->string('guarantee_type');
             $table->double('amount_guaranteed');
             $table->string('beneficiary');

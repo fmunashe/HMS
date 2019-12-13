@@ -28,7 +28,7 @@ class GuaranteeRequest extends FormRequest
             'amount_guaranteed'=>'required|numeric',
             'period'=>'required',
             'start_date'=>'required',
-            'end_date'=>'required',
+//            'end_date'=>'required',
             'beneficiary'=>'required',
             'security'=>'required',
             'customer_id'=>'required'

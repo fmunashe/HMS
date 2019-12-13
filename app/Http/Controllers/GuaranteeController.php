@@ -39,7 +39,8 @@ public function allGuarantees(){
     public function create()
     {
         $guaranteeTypes=GuaranteeType::all();
-        return view('Guarantees.create',compact('guaranteeTypes'));
+        $id="";
+        return view('Guarantees.create',compact('guaranteeTypes','id'));
     }
 
     /**
@@ -50,14 +51,22 @@ public function allGuarantees(){
      */
     public function store(GuaranteeRequest $request)
     {
+       $end_date= Carbon::createFromDate($request->input('start_date'))->addDays($request->input('period'));
         $customer=Customer::query()->where('national_id',$request->input('customer_id'))->exists();
         if($customer){
             $guarantee=new Guarantee();
+            $latestGuarantee = Guarantee::query()->orderby('created_at','DESC')->first();
+            if($latestGuarantee==null){
+                $guarantee->guarantee_number = 'GN' . str_pad(1, 7, "0", STR_PAD_LEFT);
+            }
+            else {
+                $guarantee->guarantee_number = 'GN' . str_pad($latestGuarantee->id + 1, 7, "0", STR_PAD_LEFT);
+            }
             $guarantee->guarantee_type=$request->input('guarantee_type');
             $guarantee->amount_guaranteed=$request->input('amount_guaranteed');
             $guarantee->beneficiary=$request->input('beneficiary');
             $guarantee->start_date=$request->input('start_date');
-            $guarantee->end_date=$request->input('end_date');
+            $guarantee->end_date=$end_date->format('Y-m-d');
             $guarantee->period=$request->input('period');
             $guarantee->security=$request->input('security');
             $guarantee->customer_id=$request->input('customer_id');

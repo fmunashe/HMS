@@ -27,7 +27,7 @@
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label">Client ID</label>
                                 <div class="col-md-9">
-                                    <input id="client_id" type="text" class="form-control @error('client_id') is-invalid @enderror" name="client_id" value="{{ old('client_id') }}"  autocomplete="client_id" autofocus>
+                                    <input id="client_id" type="text" class="form-control @error('client_id') is-invalid @enderror" name="client_id" value="{{ $id }}"  autocomplete="client_id" autofocus>
                                     @error('client_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

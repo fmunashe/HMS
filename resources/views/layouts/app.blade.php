@@ -21,7 +21,7 @@
     <div class="header">
         <div class="header-left">
             <a href="{{route('home')}}" class="logo">
-                <img src="{{asset('frontend/assets/img/chikwereti2.png')}}" width="50" height="50" alt="">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<span><strong>OBFMS</strong></span>
+                <img src="{{asset('frontend/assets/img/chikwereti2.png')}}" width="50" height="50" alt="">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<span><strong><h2>OBFMS</h2></strong></span>
             </a>
         </div>
         <a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>

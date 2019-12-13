@@ -70,7 +70,8 @@ class LoanController extends Controller
         $facilities=Facility::all();
         $frequencies=Repayment::all();
         $assets=Asset::where('status','102')->get();
-        return view('loans.create',compact('rates','facilities','frequencies','assets'));
+        $id="";
+        return view('loans.create',compact('rates','facilities','frequencies','assets','id'));
     }
 
     /**
