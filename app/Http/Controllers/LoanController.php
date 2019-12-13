@@ -104,7 +104,13 @@ class LoanController extends Controller
         $loan->repayment_frequency=$request->input('repayment_frequency');
         $loan->applicable_interest=$request->input('applicable_interest');
         $loan->applicable_penalt=$request->input('applicable_penalt');
-        $loan->collateral=$request->input('collateral');
+        $assets=$request->input('asset_number');
+        $collateral="";
+        foreach($assets as $asset){
+          $collateral=$asset." , ".$collateral;
+        }
+        $loan->collateral=$collateral;
+        $loan->optional_collateral=$request->input('optional_collateral');
         $loan->total_amount_payable=$request->input('total_amount_payable');
         $loan->outstanding=$request->input('total_amount_payable');
         $loan->total_installments=$request->input('total_installments');
@@ -134,7 +140,7 @@ class LoanController extends Controller
             $due=90;
         }
         else{
-            $due=365;
+            $due=366;
         }
         $penalt=new Penalty();
         $penalt->loan_id=$loan->loan_id;

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Asset;
 use App\Customer;
+use App\Installment;
 use App\Loan;
 use App\LoanSchedule;
 use App\Notifications\LoanAdvice;
@@ -71,17 +72,24 @@ class HomeController extends Controller
             ->groupBy('branch');
         $unauthorised=Charts::database(Loan::where('status','=','103')->get(),'bar','highcharts')
             ->title('Unauthorised Loans Per Branch')
-            ->colors(['#b20a2c'])
+            ->colors(['#7F00FF','#fc4a1a','#302b63','#CAC531','#b20a2c','#0f9b0f','#667db6','#AA076B','#ffa751','#fbc7d4','#9796f0','#00F260','#94716B','#667db6','#536976','#48b1bf','#E100FF','#f7b733','#F7F8F8','#71B280'])
             ->responsive(true)
             ->ElementLabel('Total Count')
             ->groupBy('branch');
 
-//        $realtime=Charts::realtime(route('realtime'),1000,'bar','highcharts')
-//            ->title('Realtime Loan Processing')
-//            ->responsive(true)
-//            ->ElementLabel('Total Count')
-//            ->colors(['#0f9b0f','#f7b733','#b20a2c','#CAC531','#48b1bf','#E100FF','#7F00FF','#667db6','#667db6','#fc4a1a','#302b63']);
+        $unauthorisedInstallments=Charts::database(Installment::where('status','=','103')->get(),'bar','highcharts')
+            ->title('Unauthorised Installments Per Branch')
+            ->colors(['#CAC531','#00F260','#94716B','#667db6','#f7b733','#F7F8F8','#b20a2c','#0f9b0f','#536976','#48b1bf','#E100FF','#7F00FF','#fc4a1a','#302b63','#667db6','#AA076B','#ffa751','#fbc7d4','#9796f0','#71B280'])
+            ->responsive(true)
+            ->ElementLabel('Total Count')
+            ->groupBy('branch');
 
-        return view('home',compact('data','clients','unauthorised','totalloans'));
+        $realtime=Charts::realtime(route('realtime'),1000,'bar','highcharts')
+            ->title('Realtime Loan Processing Simulation')
+            ->responsive(true)
+            ->ElementLabel('Total Count')
+            ->colors(['#0f9b0f','#f7b733','#b20a2c','#CAC531','#48b1bf','#E100FF','#7F00FF','#667db6','#667db6','#fc4a1a','#302b63']);
+
+        return view('home',compact('data','clients','unauthorised','totalloans','unauthorisedInstallments','realtime'));
     }
 }

@@ -130,7 +130,7 @@
                                         <td>{{number_format($schedule->opening_balance,2)}}</td>
                                         <td>{{number_format($schedule->installment,2)}}</td>
                                         <td>{{number_format($schedule->interest,2)}}</td>
-                                        <td>{{$schedule->paid_amount}}</td>
+                                        <td>{{number_format($schedule->paid_amount,2)}}</td>
                                         <td>{{number_format($schedule->capital_repayment,2)}}</td>
                                         <td>{{number_format($schedule->closing_balance,2)}}</td>
                                         {{--                                        <td>{{$schedule->start_date}}</td>--}}
@@ -186,16 +186,16 @@
                                                 <tr>
                                                     <th>Total Payable:</th>
                                                     <td class="text-right text-primary">
-                                                        <h5>{{$loan->total_amount_payable}}</h5>
+                                                        <h5>{{number_format($loan->total_amount_payable,2)}}</h5>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th>Paid Amount:</th>
-                                                    <td class="text-right">{{round($loan->paid_amount,2)}}</td>
+                                                    <td class="text-right">{{number_format($loan->paid_amount,2)}}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Outstanding Balance:</th>
-                                                    <td class="text-right">{{$loan->outstanding}}</td>
+                                                    <td class="text-right">{{number_format($loan->outstanding,2)}}</td>
                                                 </tr>
                                                 </tbody>
                                                 <tr>

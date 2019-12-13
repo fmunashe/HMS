@@ -180,6 +180,22 @@ Route::get('/searchLoan','LoanScheduleController@searchLoan')->name('searchLoan'
 Route::get('/showMaturity/{loan}','LoanScheduleController@showMaturity')->name('showMaturity');
 Route::get('/loanMaturity','LoanController@loanMaturity')->name('loanMaturity');
 Route::get('/searchLoanMaturity','LoanController@searchLoanMaturity')->name('searchLoanMaturity');
-
 Route::get('/loanStatement','LoanController@loanStatement')->name('loanStatement');
 Route::get('/searchLoanStatement','LoanController@searchLoanStatement')->name('searchLoanStatement');
+
+//Routes for guarantee types
+Route::get('/guaranteeTypes','GuaranteeTypeController@index')->name('guaranteeTypes');
+Route::get('/createGuaranteeType', 'GuaranteeTypeController@create')->name('createGuaranteeType');
+Route::post('/createGuaranteeType', 'GuaranteeTypeController@store')->name('createGuaranteeType');
+Route::get('/editGuaranteeType/{guaranteeType}', 'GuaranteeTypeController@edit')->name('editGuaranteeType');
+Route::put('/updateGuaranteeType/{guaranteeType}', 'GuaranteeTypeController@update')->name('updateGuaranteeType');
+Route::get('/deleteGuaranteeType/{guaranteeType}', 'GuaranteeTypeController@destroy')->name('deleteGuaranteeType');
+//Routes for guarantees
+Route::get('/guarantees','GuaranteeController@index')->name('guarantees');
+Route::get('/createGuarantee', 'GuaranteeController@create')->name('createGuarantee');
+Route::post('/createGuarantee', 'GuaranteeController@store')->name('createGuarantee');
+Route::get('/editGuarantee/{guarantee}', 'GuaranteeController@edit')->name('editGuarantee');
+Route::get('/showGuarantee/{guarantee}', 'GuaranteeController@show')->name('showGuarantee');
+Route::get('/authorizeGuarantee/{guarantee}', 'GuaranteeController@authorizeGuarantee')->name('authorizeGuarantee');
+Route::put('/updateGuarantee/{guarantee}', 'GuaranteeController@update')->name('updateGuarantee');
+Route::get('/deleteGuarantee/{guarantee}', 'GuaranteeController@destroy')->name('deleteGuarantee');

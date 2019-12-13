@@ -70,6 +70,7 @@
                         <a href="#"><i class="fa fa-cogs text-success"></i> <span> Configurables </span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
                             <li><a href="{{route('facilities')}}"><i class="fa fa-cart-plus text-success"></i> <span>Facilities</span></a></li>
+                            <li><a href="{{route('guaranteeTypes')}}"><i class="fa fa-ticket text-success"></i> <span>Guarantee Types</span></a></li>
                             <li><a href="{{route('branches')}}"><i class="fa fa-bank text-success"></i> <span>&nbsp;Branches</span></a></li>
                             <li><a href="{{route('currencies')}}"><i class="fa fa-money text-success"></i><span>&nbsp;Currencies</span></a></li>
                             <li><a href="{{route('interests')}}"><i class="fa fa-percent text-success"></i> <span>&nbsp;Rates Applicable</span></a></li>
@@ -88,6 +89,7 @@
                             <li><a href="{{route('myLoans')}}"><i class="fa fa-suitcase text-success"></i> All my Loans </a></li>
                             <li><a href="{{route('installments')}}"><i class="fa fa-money text-success"></i> <span>&nbsp;My Installments</span></a></li>
                             <li><a href="{{route('unauthorised')}}"><i class="fa fa-thumbs-o-down text-warning"></i>Unauthorised Loans </a></li>
+                            <li><a href="{{route('guarantees')}}"><i class="fa fa-gitlab text-success"></i> <span>&nbsp;Guarantees</span></a></li>
                            @hasanyrole('administrator|inputter')
                             <li><a href="{{route('rejections')}}"><i class="fa fa-refresh text-danger"></i> Rolled back Loans </a></li>
                             @endhasanyrole

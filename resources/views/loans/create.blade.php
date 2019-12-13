@@ -136,7 +136,7 @@
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label">Collateral</label>
                                 <div class="col-md-9">
-                                    <input id="collateral" type="text" class="form-control @error('collateral') is-invalid @enderror" name="collateral" value="{{ old('collateral') }}"  autocomplete="collateral" autofocus>
+                                    <input id="collateral" type="text" class="form-control @error('collateral') is-invalid @enderror" name="collateral" value="{{ old('collateral') }}"  autocomplete="collateral" autofocus placeholder="The select assets serve as default collateral" readonly>
                                     @error('collateral')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -144,6 +144,18 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label">Second Collateral</label>
+                                <div class="col-md-9">
+                                    <input id="optional_collateral" type="text" class="form-control @error('optional_collateral') is-invalid @enderror" name="optional_collateral" value="{{ old('optional_collateral') }}"  autocomplete="optional_collateral" autofocus>
+                                    @error('optional_collateral')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label">Tenor</label>
                                 <div class="col-md-9">
@@ -215,6 +227,7 @@
         let cal;
         let closing,int,capital,i,answer;
         let compound=0;
+        let asset,collateral;
         function check1() {
             principal=+(document.getElementById('loan_amount').value);
             startDate=new Date(document.getElementById('establishment_date').value);
@@ -243,4 +256,5 @@
             document.getElementById('total_amount_payable').value=(installmentAmount*totalInstallments).toFixed(2);
         }
     </script>
+
 @endsection

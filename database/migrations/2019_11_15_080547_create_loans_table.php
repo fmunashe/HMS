@@ -26,6 +26,7 @@ class CreateLoansTable extends Migration
             $table->string('applicable_interest');
             $table->string('applicable_penalt');
             $table->string('collateral')->nullable();
+            $table->string('optional_collateral')->nullable();
             $table->string('total_amount_payable');
             $table->string('status')->nullable()->default('103');
             $table->string('authorised_by')->nullable();

@@ -6,6 +6,7 @@ use App\Facility;
 use App\Repayment;
 use App\Status;
 use Illuminate\Database\Seeder;
+use App\GuaranteeType;
 
 class BranchTableSeeder extends Seeder
 {
@@ -87,6 +88,15 @@ class BranchTableSeeder extends Seeder
         foreach ($facilities as $facility) {
             Facility::create($facility);
         }
+        $guarantees=[
+            ['guarantee_type'=>'Bid Bond'],
+            ['guarantee_type'=>'Advance Payment'],
+            ['guarantee_type'=>'Performance Bond'],
+        ];
+        foreach($guarantees as $guarantee){
+           GuaranteeType::create($guarantee);
+        }
+
         Currency::create([
             'currency_code' => '840',
             'currency_name' => 'USD',

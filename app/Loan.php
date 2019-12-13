@@ -20,6 +20,7 @@ class Loan extends Model implements Auditable
         'applicable_interest',
         'applicable_penalt',
         'collateral',
+        'optional_collateral',
         'total_amount_payable',
         'status',
         'captured_by',

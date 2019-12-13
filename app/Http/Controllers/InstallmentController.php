@@ -163,7 +163,7 @@ class InstallmentController extends Controller
         //Calculate loan amortization schedule
             $schedule= LoanSchedule::query()->where('loan_id',$installment->loan_id)->where('status',false)->first();
             if($schedule){
-                if($installment->amount==round($schedule->installment,2)){
+                if($installment->amount==round($schedule->installment+$schedule->overdue,2)){
                     $schedule->paid_amount=$installment->amount;
                     $schedule->status=true;
                     $schedule->save();
@@ -174,7 +174,7 @@ class InstallmentController extends Controller
                     $loan->status='105';
                     $loan->save();
                 }
-                elseif ($installment->amount>round($schedule->installment,2)){
+                elseif ($installment->amount>round($schedule->installment+$schedule->overdue,2)){
                     $schedule->paid_amount=$installment->amount;
                     $schedule->status=true;
                     $schedule->capital_repayment=$schedule->paid_amount-$schedule->interest;

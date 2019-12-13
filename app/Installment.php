@@ -22,7 +22,7 @@ class Installment extends Model implements Auditable
             $days=90;
         }
         elseif($freq->frequency_number=='1'){
-            $days=365;
+            $days=366;
         }
         return $days;
     }

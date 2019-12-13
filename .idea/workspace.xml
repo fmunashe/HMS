@@ -2,35 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6133cc53-2f1b-46f3-84b7-ace30c3bd4d0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/installments/allInstallments.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/loans/loanMaturity.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/loans/statement.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/HMS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/HMS.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/fzihove.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/GuaranteeTypes/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/GuaranteeTypes/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/GuaranteeTypes/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Guarantees/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Guarantees/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Guarantees/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Guarantees/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Commands/CalculatePenalts.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/CalculatePenalts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Commands/CloseLoans.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/CloseLoans.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Commands/EmailAdvice.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/EmailAdvice.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InstallmentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InstallmentController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LoanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LoanController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Installment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Installment.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Loan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Loan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/mail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_14_152459_create_installments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_14_152459_create_installments_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/PermissionsSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/PermissionsSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/audit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/audit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_15_080547_create_loans_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_15_080547_create_loans_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/BranchTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/BranchTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/loans/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/loans/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/loans/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/loans/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/rejections/myLoans.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/rejections/myLoans.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/schedules/maturity.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/schedules/maturity.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/loans/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/loans/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/loans/showAll.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/loans/showAll.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/logs/laravel-2019-12-04.log" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,6 +183,9 @@
       <workItem from="1575640777827" duration="422000" />
       <workItem from="1575641338244" duration="7968000" />
       <workItem from="1575905747804" duration="644000" />
+      <workItem from="1576168322268" duration="11403000" />
+      <workItem from="1576185157478" duration="16783000" />
+      <workItem from="1576244038851" duration="7788000" />
     </task>
     <servers />
   </component>
@@ -199,13 +193,22 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="689" y="265" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1576190842840">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="689" y="265" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1576190842840" />
+    <state x="794" y="434" key="NewPhpFileDialog" timestamp="1576244610385">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="794" y="434" key="NewPhpFileDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1576244610385" />
     <state x="277" y="44" key="SettingsEditor" timestamp="1575641318269">
       <screen x="0" y="0" width="1536" height="826" />
     </state>
     <state x="277" y="44" key="SettingsEditor/0.0.1536.826@0.0.1536.826" timestamp="1575641318269" />
-    <state x="470" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1575905785265">
-      <screen x="0" y="0" width="1536" height="826" />
+    <state x="588" y="295" key="com.intellij.ide.util.TipDialog" timestamp="1576244042815">
+      <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="470" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.826@0.0.1536.826" timestamp="1575905785265" />
+    <state x="588" y="295" key="com.intellij.ide.util.TipDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1576244042815" />
   </component>
 </project>
