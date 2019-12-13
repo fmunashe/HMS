@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card-box">
-                <h4 class="card-title">Guarantees <a href="{{route('createGuarantee')}}" class="btn btn-success btn-rounded pull-right"><i class="fa fa-plus"></i> New Guarantee</a></h4>
+                <h4 class="card-title">Guarantees @hasanyrole('administrator|inputter')<a href="{{route('createGuarantee')}}" class="btn btn-success btn-rounded pull-right"><i class="fa fa-plus"></i> New Guarantee</a>@endhasanyrole</h4>
                 <table class="table table-striped table-hover table-condensed">
                     <thead>
                     <tr>

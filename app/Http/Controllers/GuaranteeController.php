@@ -8,6 +8,7 @@ use App\GuaranteeType;
 use App\Http\Requests\GuaranteeRequest;
 use App\Notifications\AuthorizeGuarantee;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -26,7 +27,10 @@ class GuaranteeController extends Controller
         $guarantees=Guarantee::where('branch',auth()->user()->branch)->get();
         return view('Guarantees.index',compact('guarantees'));
     }
-
+public function allGuarantees(){
+        $guarantees=Guarantee::all();
+        return view('Guarantees.allGuarantee',compact('guarantees'));
+}
     /**
      * Show the form for creating a new resource.
      *

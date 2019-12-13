@@ -5,6 +5,7 @@ namespace App\Console;
 use App\Console\Commands\CalculatePenalts;
 use App\Console\Commands\CloseLoans;
 use App\Console\Commands\EmailAdvice;
+use App\Console\Commands\ExpireGuarantees;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -19,6 +20,7 @@ class Kernel extends ConsoleKernel
         CloseLoans::class,
         EmailAdvice::class,
         CalculatePenalts::class,
+        ExpireGuarantees::class,
     ];
 
     /**
@@ -34,6 +36,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('close:loans')->daily()->between('02:00','0300');
         $schedule->command('email:advice')->daily()->between('02:00','0300');
         $schedule->command('calculate:penalts')->daily()->between('02:00','0300');
+        $schedule->command('expire:guarantees')->daily()->between('02:00','0300');
     }
 
     /**
