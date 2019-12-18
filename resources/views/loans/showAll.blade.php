@@ -3,7 +3,7 @@
     <div class="content">
         <div class="row">
             <div class="col-lg-12">
-                <h4 class="page-title">Loan Details <a href="{{route('loans')}}" class="btn btn-success btn-rounded pull-right"><i class="fa fa-backward"></i> Back</a></h4>
+                <h4 class="page-title"><a href="{{route('loans')}}" class="btn btn-success btn-rounded pull-right"><i class="fa fa-backward"></i> Back</a></h4>
             </div>
         </div>
         <div class="row">
@@ -12,7 +12,7 @@
                     <div class="card-body">
                         <div class="row custom-invoice">
                             <div class="col-6 col-sm-6 m-b-20">
-                                <img src="{{asset('frontend/assets/img/farm.png')}}" class="inv-logo" alt="">
+                                <img src="{{asset('frontend/assets/img/loans.JPG')}}" class="inv-logo" alt="">
                             </div>
                             <div class="col-6 col-sm-6 m-b-20">
                                 <div class="invoice-details">
@@ -92,6 +92,14 @@
                                         <td>{{$asset->AssetDesc($asset->asset_number)}}</td>
                                     </tr>
                                 @endforeach
+                                <tr>
+                                    <td><h6>Collateral (1): </h6></td>
+                                    <td>{{$loan->collateral}}</td>
+                                    <td><h6>Collateral (2):</h6></td>
+                                    <td>{{$loan->optional_collateral}}</td>
+                                    <td><h6>&nbsp;</h6></td>
+                                    <td>&nbsp;</td>
+                                </tr>
                                 <tr>
                                     <td><h6>Product Line: </h6></td>
                                     <td>{{$loan->facility_category}}</td>

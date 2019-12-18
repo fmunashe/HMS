@@ -106,7 +106,7 @@
                             <li><a href="{{route('customers')}}"><i class="fa fa-users text-success"></i> <span>All Clients</span></a></li>
                             <li><a href="{{route('allInstallments')}}"><i class="fa fa-mobile text-success"></i> <span>All Installments</span></a></li>
                             <li><a href="{{route('loanMaturity')}}"><i class="fa fa-folder-open-o text-success"></i> <span>Loan Maturity</span></a></li>
-                            <li><a href="{{route('loanStatement')}}"><i class="fa fa-file-pdf-o text-red"></i> <span>Loan Statements</span></a></li>
+{{--                            <li><a href="{{route('loanStatement')}}"><i class="fa fa-file-pdf-o text-red"></i> <span>Loan Statements</span></a></li>--}}
                             <li><a href="{{route('allGuarantees')}}"><i class="fa fa-fighter-jet text-red"></i> <span>Guarantees</span></a></li>
                             @hasanyrole('auditor|administrator')
                             <li><a href="{{route('audits')}}"><i class="fa fa-user-secret text-success"></i> <span>Audited Events</span></a></li>

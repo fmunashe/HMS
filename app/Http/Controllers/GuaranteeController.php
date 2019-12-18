@@ -114,7 +114,7 @@ public function allGuarantees(){
         $guarantee->status=true;
         $guarantee->authorised_by=auth()->user()->name;
         $guarantee->save();
-        return redirect()->route('guarantees')->withSuccessMessage("Guarantee ".$guarantee->id." successfully authorised");
+        return redirect()->route('guarantees')->withSuccessMessage("Guarantee ".$guarantee->guarantee_number." successfully authorised");
     }
     }
 

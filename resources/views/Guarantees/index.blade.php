@@ -22,10 +22,10 @@
                     <tbody>
                     @foreach($guarantees as $guarantee)
                         <tr>
-                            <td>{{$guarantee->id}}</td>
+                            <td>{{$guarantee->guarantee_number}}</td>
                             <td>{{$guarantee->Customer($guarantee->customer_id)}}</td>
                             <td>{{$guarantee->GuaranteeType($guarantee->guarantee_type)}}</td>
-                            <td>{{$guarantee->amount_guaranteed}}</td>
+                            <td>{{number_format($guarantee->amount_guaranteed,2)}}</td>
                             <td>{{$guarantee->beneficiary}}</td>
                             <td>{{$guarantee->start_date}}</td>
                             <td>{{$guarantee->end_date}}</td>

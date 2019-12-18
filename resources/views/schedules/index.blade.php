@@ -7,7 +7,7 @@
     <div class="content">
         <div class="row">
             <div class="col-lg-12">
-                <h4 class="page-title">Loan Schedule Breakdown Details <a href="{{route('schedules')}}" class="btn btn-success btn-rounded pull-right"><i class="fa fa-refresh"></i> Refresh Page</a></h4>
+                <h4 class="page-title"><a href="{{route('schedules')}}" class="btn btn-success btn-rounded pull-right"><i class="fa fa-refresh"></i> Refresh Page</a></h4>
             </div>
         </div>
         <div class="row">
@@ -16,7 +16,7 @@
                     <div class="card-body">
                         <div class="row custom-invoice">
                             <div class="col-6 col-sm-6 m-b-20">
-                                <img src="{{asset('frontend/assets/img/farm.png')}}" class="inv-logo" alt="">
+                                <img src="{{asset('frontend/assets/img/loans.JPG')}}" class="inv-logo" alt="">
                             </div>
                             <div class="col-6 col-sm-6 m-b-20">
                                 <div class="invoice-details">
@@ -31,7 +31,7 @@
                         </div>
                         <form action="{{route('searchLoan')}}" method="get" class="sidebar-form">
                             <div class="input-group">
-                                <input type="text" name="searchLoan" class="form-control alert-success" placeholder="Search...">
+                                <input type="text" name="searchLoan" class="form-control alert-success" placeholder="Search by LD number ............">
                                 <span class="input-group-btn">
                                  <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                                  </button>

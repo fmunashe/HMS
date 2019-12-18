@@ -40,7 +40,7 @@
                                 <div class="col-md-9">
                                         <select id="asset_number" multiple size="8" class="form-control @error('asset_number') is-invalid @enderror" name="asset_number[]"  autocomplete="asset_number" autofocus>
                                          @foreach($assets as $asset)
-                                        <option value="{{$asset->asset_number}}">{{$asset->asset_number."  ".$asset->asset_description }}</option>
+                                        <option value="{{$asset->asset_number}}">{{$asset->asset_number."  ".$asset->asset_name }}</option>
                                         @endforeach
                                         </select>
                                         @error('asset_number')
@@ -134,7 +134,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label">Collateral</label>
+                                <label class="col-md-3 col-form-label">Collateral(1)</label>
                                 <div class="col-md-9">
                                     <input id="collateral" type="text" class="form-control @error('collateral') is-invalid @enderror" name="collateral" value="{{ old('collateral') }}"  autocomplete="collateral" autofocus placeholder="The select assets serve as default collateral" readonly>
                                     @error('collateral')
@@ -145,7 +145,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label">Second Collateral</label>
+                                <label class="col-md-3 col-form-label">Collateral 2(Optional)</label>
                                 <div class="col-md-9">
                                     <input id="optional_collateral" type="text" class="form-control @error('optional_collateral') is-invalid @enderror" name="optional_collateral" value="{{ old('optional_collateral') }}"  autocomplete="optional_collateral" autofocus>
                                     @error('optional_collateral')

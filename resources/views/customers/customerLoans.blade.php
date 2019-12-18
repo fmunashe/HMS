@@ -11,7 +11,6 @@
                         <th>Facility</th>
                         <th>Branch</th>
                         <th>Loan</th>
-                        <th>Asset</th>
                         <th>Amount</th>
                         <th>Period</th>
                         <th>Status</th>
@@ -27,12 +26,11 @@
                             <td>{{$loan->facility_category}}</td>
                             <td>{{$loan->branch}}</td>
                             <td>{{$loan->loan_id}}</td>
-                            <td>{{$loan->asset_number}}</td>
-                            <td>{{$loan->total_amount_payable}}</td>
+                            <td>{{number_format($loan->total_amount_payable,2)}}</td>
                             <td>{{$loan->period}}</td>
                             <td>@if($loan->status=="103" or $loan->status=="106" or $loan->status=="108")<i class="custom-badge badge-danger-border">{{$loan->StatusName($loan->status)}}</i>@else<i class="custom-badge badge-success-border">{{$loan->StatusName($loan->status)}}</i>@endif</td>
-                            <td>{{$loan->paid_amount}}</td>
-                            <td>{{$loan->outstanding}}</td>
+                            <td>{{number_format($loan->paid_amount,2)}}</td>
+                            <td>{{number_format($loan->outstanding,2)}}</td>
                             <td>
                                 <div class="dropdown dropdown-action">
                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>

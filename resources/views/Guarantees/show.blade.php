@@ -12,7 +12,7 @@
                     <div class="card-body">
                         <div class="row custom-invoice">
                             <div class="col-6 col-sm-6 m-b-20">
-                                <img src="{{asset('frontend/assets/img/farm.png')}}" class="inv-logo" alt="">
+                                <img src="{{asset('frontend/assets/img/bonds.JPG')}}" class="inv-logo" alt="">
                             </div>
                             <div class="col-6 col-sm-6 m-b-20">
                                 <div class="invoice-details">
@@ -41,7 +41,7 @@
                                 </tr>
                                 <tr>
                                     <td><h6>Amount Guaranteed:</h6></td>
-                                    <td>{{$guarantee->amount_guaranteed}}</td>
+                                    <td>{{number_format($guarantee->amount_guaranteed,2)}}</td>
                                     <td><h6>Beneficiary:</h6></td>
                                     <td>{{$guarantee->beneficiary}}</td>
                                     <td><h6>Security: </h6></td>

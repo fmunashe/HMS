@@ -16,7 +16,7 @@
                     <div class="card-body">
                         <div class="row custom-invoice">
                             <div class="col-6 col-sm-6 m-b-20">
-                                <img src="{{asset('frontend/assets/img/farm.png')}}" class="inv-logo" alt="">
+                                <img src="{{asset('frontend/assets/img/loans.JPG')}}" class="inv-logo" alt="">
                             </div>
                         </div>
                         <form action="{{route('searchLoanStatement')}}" method="get" class="sidebar-form">

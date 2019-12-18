@@ -7,7 +7,12 @@
     <div class="content">
         <div class="row">
             <div class="col-lg-12">
-                <h4 class="page-title">Loan Maturity <a href="{{route('loanMaturity')}}" class="btn btn-success btn-rounded pull-right"><i class="fa fa-refresh"></i> Refresh Page</a></h4>
+                <h4 class="page-title"><a href="{{route('loanMaturity')}}" class="btn btn-success btn-rounded pull-right"><i class="fa fa-refresh"></i> Refresh Page</a></h4>
+                <div class="row custom-invoice">
+                    <div class="col-6 col-sm-6 m-b-20">
+                        <img src="{{asset('frontend/assets/img/loans.JPG')}}" class="inv-logo" alt="">
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">

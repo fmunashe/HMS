@@ -4,6 +4,11 @@
         <div class="col-lg-12">
             <div class="card-box">
                 <h4 class="card-title">Loan Maturity Report <a href="{{route('maturityReport')}}" class="btn btn-success btn-rounded pull-right"><i class="fa fa-refresh"></i> Reload View</a></h4>
+                <div class="row custom-invoice">
+                    <div class="col-6 col-sm-6 m-b-20">
+                        <img src="{{asset('frontend/assets/img/loans.JPG')}}" class="inv-logo" alt="">
+                    </div>
+                </div>
                 <form action="{{route('searchMaturity')}}" method="get" class="sidebar-form">
                     <div class="input-group">
                         <input type="text" name="searchLoan" class="form-control alert-success" placeholder="Search by branch or product line...........">

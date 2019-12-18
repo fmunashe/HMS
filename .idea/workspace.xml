@@ -3,20 +3,26 @@
   <component name="ChangeListManager">
     <list default="true" id="6133cc53-2f1b-46f3-84b7-ace30c3bd4d0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Guarantee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Guarantee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GuaranteeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GuaranteeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LoanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LoanController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CustomerRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CustomerRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/GuaranteeRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/GuaranteeRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_12_201404_create_guarantees_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_12_201404_create_guarantees_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/session.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/session.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Guarantees/allGuarantee.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Guarantees/allGuarantee.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Guarantees/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Guarantees/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Guarantees/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Guarantees/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Guarantees/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Guarantees/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/customers/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customers/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customers/customerLoans.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customers/customerLoans.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customers/showCustomerLoans.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customers/showCustomerLoans.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/loans/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/loans/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/logs/laravel-2019-12-13.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel-2019-12-13.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/loans/loanMaturity.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/loans/loanMaturity.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/loans/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/loans/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/loans/showAll.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/loans/showAll.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/loans/statement.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/loans/statement.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/schedules/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/schedules/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/schedules/maturity.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/schedules/maturity.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/schedules/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/schedules/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/logs/laravel-2019-12-12.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/logs/laravel-2019-12-13.log" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +186,9 @@
       <workItem from="1575905747804" duration="644000" />
       <workItem from="1576168322268" duration="11403000" />
       <workItem from="1576185157478" duration="16783000" />
-      <workItem from="1576244038851" duration="25297000" />
+      <workItem from="1576244038851" duration="26278000" />
+      <workItem from="1576496966667" duration="11712000" />
+      <workItem from="1576606107878" duration="2979000" />
     </task>
     <servers />
   </component>
@@ -200,10 +208,10 @@
       <screen x="0" y="0" width="1536" height="826" />
     </state>
     <state x="277" y="44" key="SettingsEditor/0.0.1536.826@0.0.1536.826" timestamp="1575641318269" />
-    <state x="588" y="295" key="com.intellij.ide.util.TipDialog" timestamp="1576244042815">
+    <state x="588" y="295" key="com.intellij.ide.util.TipDialog" timestamp="1576606108809">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="470" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.826@0.0.1536.826" timestamp="1575905785265" />
-    <state x="588" y="295" key="com.intellij.ide.util.TipDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1576244042815" />
+    <state x="588" y="295" key="com.intellij.ide.util.TipDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1576606108809" />
   </component>
 </project>

@@ -26,13 +26,13 @@
                     <tbody>
                     @foreach($guarantees as $guarantee)
                         <tr>
-                            <td>{{$guarantee->id}}</td>
+                            <td>{{$guarantee->guarantee_number}}</td>
                             <td>@if($guarantee->customer_id=="")@else {{$guarantee->Customer($guarantee->customer_id)}}@endif</td>
                             <td>@if($guarantee->branch=="") @else {{$guarantee->Branch($guarantee->branch)}}@endif</td>
                             <td>@if($guarantee->guarantee_type=="") @else {{$guarantee->GuaranteeType($guarantee->guarantee_type)}}@endif</td>
                             <td>{{$guarantee->start_date}}</td>
                             <td>{{$guarantee->end_date}}</td>
-                            <td>{{$guarantee->amount_guaranteed}}</td>
+                            <td>{{number_format($guarantee->amount_guaranteed,2)}}</td>
                             <td>{{$guarantee->security}}</td>
                             <td>{{$guarantee->beneficiary}}</td>
                             <td>@if($guarantee->active=="0")<i class="custom-badge badge-danger-border">Expired</i>@else<i class="custom-badge badge-success-border">Active</i>@endif</td>
